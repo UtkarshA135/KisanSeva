@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kisanseva/screens/smartConnect.dart';
 import 'package:kisanseva/services/authservice.dart';
 class HomeScreen extends StatefulWidget {
   @override
@@ -25,6 +26,20 @@ class _HomeScreenState extends State<HomeScreen> {
           },
           )
         ]
+      ),
+      body:Column(
+        children:[Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            RaisedButton(
+              onPressed: (){
+                 Navigator.push(context, MaterialPageRoute(builder: (context)=> smartConnect()));
+              },
+              child:Text("Smart Connect"),
+              
+              )
+          ],
+        )],
       ),
     ));
   }
