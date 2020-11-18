@@ -33,6 +33,7 @@ dependencies:
   provider: ^4.0.5
   shared_preferences: ^0.5.6+3
   fluttertoast: ^4.0.1
+  image_picker: ^0.6.7+14
 dev_dependencies:
   flutter_test:
     sdk: flutter
