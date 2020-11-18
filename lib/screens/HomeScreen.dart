@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kisanseva/screens/rent_tools/my_home_page.dart';
+import 'package:kisanseva/screens/smartConnect.dart';
 import 'package:kisanseva/services/authservice.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -34,17 +35,33 @@ class _HomeScreenState extends State<HomeScreen> {
               },
             )
           ]),
-      body: Center(
-        child: RaisedButton(
-          color: Colors.yellow,
-          child: Text("Rent Tools"),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => MyHomePage()),
-            );
-          },
-        ),
+      body: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              RaisedButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => smartConnect()));
+                },
+                child: Text("Smart Connect"),
+              )
+            ],
+          ),
+          Center(
+            child: RaisedButton(
+              color: Colors.yellow,
+              child: Text("Rent Tools"),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MyHomePage()),
+                );
+              },
+            ),
+          ),
+        ],
       ),
     ));
   }
