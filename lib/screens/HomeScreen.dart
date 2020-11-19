@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:kisanseva/screens/rent_tools/my_home_page.dart';
-import 'package:kisanseva/screens/smartConnect.dart';
+import 'package:kisanseva/screens/smartConnect/smartConnect.dart';
 import 'package:kisanseva/services/authservice.dart';
+
+import 'smartConnect/connect.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
