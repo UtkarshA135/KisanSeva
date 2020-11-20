@@ -2,12 +2,10 @@ import 'package:flutter/material.dart';
 import 'screens/splash.dart';
 import 'package:provider/provider.dart';
 import 'services/firebaseUserProvider.dart';
+
 void main() => runApp(MultiProvider(providers: [
       ChangeNotifierProvider<FirebaseUserProvider>(
           create: (context) => FirebaseUserProvider()),
-
-
-    
     ], child: MyApp()));
 
 class MyApp extends StatefulWidget {
@@ -20,7 +18,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-    final _navigatorKey = GlobalKey<NavigatorState>();
+  final _navigatorKey = GlobalKey<NavigatorState>();
   bool isBuyer = true;
   @override
   void initState() {
@@ -32,15 +30,14 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-   return MaterialApp(
+    return MaterialApp(
       navigatorKey: _navigatorKey,
       title: 'Food App',
       debugShowCheckedModeBanner: false,
-     /* darkTheme: ThemeData(
+      /* darkTheme: ThemeData(
           brightness: Brightness.dark, primarySwatch: Colors.deepOrange),*/
-
+      theme: ThemeData(primarySwatch: Colors.green),
       home: SplashScreen(),
-      
-      );
+    );
   }
 }
