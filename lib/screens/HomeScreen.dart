@@ -45,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
               RaisedButton(
                 onPressed: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => smartConnect()));
+                      MaterialPageRoute(builder: (context) => connect()));
                 },
                 child: Text("Smart Connect"),
               )
