@@ -35,6 +35,7 @@ dependencies:
   fluttertoast: ^4.0.1
   image_picker: ^0.6.7+14
   persistent_bottom_nav_bar: any
+  page_transition: ^1.1.7+2
 dev_dependencies:
   flutter_test:
     sdk: flutter
