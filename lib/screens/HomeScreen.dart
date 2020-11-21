@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:kisanseva/screens/feed/feed_page.dart';
 import 'package:kisanseva/screens/rent_tools/my_home_page.dart';
 import 'package:kisanseva/screens/smartConnect/smartConnect.dart';
 import 'package:kisanseva/services/authservice.dart';
@@ -118,7 +119,7 @@ class _HomeScreenState extends State<HomeScreen> {
       Container(), //TODO add disease detection
       Container(),
       smartConnect(), //TODO add yield prediction
-      Container() //TODO add feed
+      Feed() //TODO add feed
     ];
   }
 
