@@ -139,6 +139,7 @@ class _AddItemState extends State<AddItem> {
                 // Navigator.pop(context);
                 // await addRentToolsCtrl.postImage(imageFile);
                 await addRentToolsCtrl.addRentTools(imageFile);
+                Navigator.pop(context);
               },
               shape: StadiumBorder(),
               child: Text(
@@ -161,6 +162,9 @@ class _AddItemState extends State<AddItem> {
             height: 10,
           ),
           TextFormField(
+            onChanged: (value) {
+              addRentToolsCtrl.rentToolsModel.toolName = value;
+            },
             decoration: InputDecoration(
               enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.grey)),
@@ -173,17 +177,23 @@ class _AddItemState extends State<AddItem> {
             height: 10,
           ),
           TextFormField(
+            onChanged: (value) {
+              addRentToolsCtrl.rentToolsModel.toolPricePerDay = value;
+            },
             decoration: InputDecoration(
                 enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.grey)),
                 border: OutlineInputBorder(),
-                labelText: "Cost per hour",
-                hintText: "eg : Rs xxx/hr"),
+                labelText: "Cost per Day",
+                hintText: "eg : Rs xxx/day"),
           ),
           SizedBox(
             height: 10,
           ),
           TextFormField(
+            onChanged: (value) {
+              addRentToolsCtrl.rentToolsModel.toolDescription = value;
+            },
             decoration: InputDecoration(
                 enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.grey)),

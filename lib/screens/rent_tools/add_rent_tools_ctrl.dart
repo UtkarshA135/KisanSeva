@@ -47,6 +47,6 @@ class AddRentToolsCtrl extends GetxController {
     //   collectionName: 'examsResources',
     //   data: _examModel.toJson(),
     // );
-    Get.back();
+    // Get.back();
   }
 }

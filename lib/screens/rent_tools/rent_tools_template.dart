@@ -34,20 +34,20 @@ class RentToolsTemplate extends StatelessWidget {
           child: Column(
             children: [
               Image(
-                image: NetworkImage(rentToolsModel.toolImage),
+                image: NetworkImage(rentToolsModel?.toolImage),
                 height: 130,
                 width: 130,
                 fit: BoxFit.contain,
               ),
               Text(
-                rentToolsModel.toolName,
+                rentToolsModel?.toolName,
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               Text(
-                rentToolsModel.toolPricePerDay,
+                rentToolsModel?.toolPricePerDay,
                 style: TextStyle(
                   fontSize: 16,
                 ),
