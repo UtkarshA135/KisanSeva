@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:kisanseva/screens/weather/screens/homeScreen.dart';
+import 'package:kisanseva/services/authservice.dart';
 
 import 'add_new.dart';
 import 'desc_page.dart';
@@ -50,6 +52,24 @@ class MyHomePage extends StatelessWidget {
             icon: Icon(Icons.notifications),
             color: Colors.white,
             onPressed: () {},
+          ),
+           IconButton(
+            icon: Icon(Icons.exit_to_app),
+            color: Colors.white,
+            onPressed: ()  async{
+             AuthService().signOut();
+                          Navigator.pushReplacement(context, new MaterialPageRoute(builder: (context)=> AuthService().handleAuth()));
+           
+          },
+          ),
+           IconButton(
+            icon: Icon(Icons.cloud),
+            color: Colors.white,
+            onPressed: ()  async{
+             AuthService().signOut();
+                          Navigator.pushReplacement(context, new MaterialPageRoute(builder: (context)=> WHomescreen()));
+           
+          },
           )
         ],
       ),
