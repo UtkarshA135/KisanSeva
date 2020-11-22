@@ -36,8 +36,9 @@ dependencies:
   image: ^2.1.4
   tflite: ^1.0.5
   fluttertoast: ^4.0.1
+  cloud_firestore:
   persistent_bottom_nav_bar:
-
+  firebase_database:
 dev_dependencies:
   flutter_test:
     sdk: flutter

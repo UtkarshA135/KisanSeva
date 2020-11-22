@@ -1,10 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:kisanseva/services/authservice.dart';
 
 import 'add_new.dart';
 import 'desc_page.dart';
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     List<Widget> items = [
@@ -43,6 +49,9 @@ class MyHomePage extends StatelessWidget {
     ];
 
     return Scaffold(
+      drawer: Drawer(
+        
+      ),
       appBar: AppBar(
         title: Text("SmartFarm"),
         actions: [
@@ -50,7 +59,20 @@ class MyHomePage extends StatelessWidget {
             icon: Icon(Icons.notifications),
             color: Colors.white,
             onPressed: () {},
-          )
+          ),
+                       IconButton(
+                icon: Icon(
+                  Icons.exit_to_app,
+                  color: Colors.black,
+                ),
+                onPressed: () async {
+                  AuthService().signOut();
+                  Navigator.pushReplacement(
+                      context,
+                      new MaterialPageRoute(
+                          builder: (context) => AuthService().handleAuth()));
+                },
+              )
         ],
       ),
       body: Container(
