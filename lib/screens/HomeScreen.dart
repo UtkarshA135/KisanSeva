@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kisanseva/screens/feed/feed_page.dart';
-import 'package:kisanseva/screens/rent_tools/my_home_page.dart';
+import 'package:kisanseva/screens/rent_tools/display_rent_tools.dart';
 import 'package:kisanseva/screens/smartConnect/smartConnect.dart';
 import 'package:kisanseva/services/authservice.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
@@ -115,7 +115,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   List<Widget> _buildScreens() {
     return [
-      MyHomePage(),
+      DisplayRentTools(),
       Container(), //TODO add disease detection
       Container(),
       smartConnect(), //TODO add yield prediction

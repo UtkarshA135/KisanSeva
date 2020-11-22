@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'add_new.dart';
 import 'desc_page.dart';
 
-class MyHomePage extends StatelessWidget {
+class DisplayRentTools extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Widget> items = [

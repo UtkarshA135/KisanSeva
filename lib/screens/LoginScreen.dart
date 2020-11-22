@@ -1,17 +1,16 @@
-
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:kisanseva/screens/HomeScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:kisanseva/services/authservice.dart';
 import 'package:kisanseva/utils/style.dart';
+
 class LoginScreen extends StatefulWidget {
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
- final formKey = new GlobalKey<FormState>();
+  final formKey = new GlobalKey<FormState>();
 
   String phoneNo, verificationId, smsCode;
 
@@ -23,7 +22,7 @@ class _LoginScreenState extends State<LoginScreen> {
 }*/
   @override
   Widget build(BuildContext context) {
-  /*  Widget _signInButton() {
+    /*  Widget _signInButton() {
       return OutlineButton(
         splashColor: Colors.grey,
         onPressed: () {
@@ -152,104 +151,123 @@ class _LoginScreenState extends State<LoginScreen> {
 
 
 }*/
-return Scaffold(
-      backgroundColor: Color(0XFF3F51b5),
-
-
-      body: Form(
-        key: formKey,
-          child:Center(
-        child: ListView(
-          children: <Widget>[
-          SizedBox(
-            height: 70,
-          ),
-          _topheader(),
-          Expanded(
-              child: Container(
-                width: double.infinity,
-                margin: EdgeInsets.only(top: 32),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(40),
-                    topRight: Radius.circular(40),
-                  ),
-                  color: Colors.grey[50],
-                ),
-                padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-                child: SingleChildScrollView(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      SizedBox(height: 40),
-                      _labelText('Phone Number'),
-                      Padding(
-                  padding: EdgeInsets.only(left: 25.0, right: 25.0),
-                  child: TextFormField(
-                    keyboardType: TextInputType.phone,
-                    
-                    decoration: InputDecoration(hintText: ' Enter your phone number',prefixText: '+91',prefixIcon: Icon(Icons.phone),enabledBorder: OutlineInputBorder(
-          borderSide:BorderSide(color: Colors.grey)),
-                border: OutlineInputBorder(),
-          ),
-                    onChanged: (val) {
-                      setState(() {
-                        this.phoneNo = '+91'+val;
-                      });
-                    },
-                  )),
-                  codeSent ?  Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      SizedBox(height: 40),
-                      _labelText('Enter OTP'),
-                   Padding(
-                  padding: EdgeInsets.only(left: 25.0, right: 25.0),
-                  child: TextFormField(
-                    keyboardType: TextInputType.phone,
-                    decoration: InputDecoration(hintText: 'Enter OTP',prefixIcon: Icon(Icons.vpn_key),enabledBorder: OutlineInputBorder(
-          borderSide:BorderSide(color: Colors.grey)),
-          border: OutlineInputBorder(),),
-                    onChanged: (val) {
-                      setState(() {
-                        this.smsCode = val;
-                      });
-                    },
-                  )) ]): Container(),
-                      
-                      SizedBox(height: 20),
-                      Align(
-                        alignment: Alignment.center,
-                        child: Container(
-                          height: 46,
-                          width: 160,
-                          child: RaisedButton(
-                            onPressed: () {
-                                 AuthService().savePhoneNumber(this.phoneNo);
-                        codeSent ? AuthService().signInWithOTP(smsCode, verificationId):verifyPhone(phoneNo);
-                            },
-                            child: 
-                            codeSent ? Text('Continue',style: TextStyle(fontSize: 20),):Text('Verify',style: TextStyle(fontSize: 20),),
-                            color: Color(0XFF303f9f),
-                            textColor: Colors.white,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30.0),
-                            ),
-                          ),
+    return Scaffold(
+        backgroundColor: Color(0XFF3F51b5),
+        body: Form(
+            key: formKey,
+            child: Center(
+                child: ListView(children: <Widget>[
+              SizedBox(
+                height: 70,
+              ),
+              _topheader(),
+              Expanded(
+                  child: Container(
+                      width: double.infinity,
+                      margin: EdgeInsets.only(top: 32),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(40),
+                          topRight: Radius.circular(40),
                         ),
+                        color: Colors.grey[50],
                       ),
-                      SizedBox(height: 12),
-                  
-                        SizedBox(height: 18),
-       
-          ]))  ))])
-          
-          )));}
-
-
-
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                      child: SingleChildScrollView(
+                          child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                            SizedBox(height: 40),
+                            _labelText('Phone Number'),
+                            Padding(
+                                padding:
+                                    EdgeInsets.only(left: 25.0, right: 25.0),
+                                child: TextFormField(
+                                  keyboardType: TextInputType.phone,
+                                  decoration: InputDecoration(
+                                    hintText: ' Enter your phone number',
+                                    prefixText: '+91',
+                                    prefixIcon: Icon(Icons.phone),
+                                    enabledBorder: OutlineInputBorder(
+                                        borderSide:
+                                            BorderSide(color: Colors.grey)),
+                                    border: OutlineInputBorder(),
+                                  ),
+                                  onChanged: (val) {
+                                    setState(() {
+                                      this.phoneNo = '+91' + val;
+                                    });
+                                  },
+                                )),
+                            codeSent
+                                ? Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                        SizedBox(height: 40),
+                                        _labelText('Enter OTP'),
+                                        Padding(
+                                            padding: EdgeInsets.only(
+                                                left: 25.0, right: 25.0),
+                                            child: TextFormField(
+                                              keyboardType: TextInputType.phone,
+                                              decoration: InputDecoration(
+                                                hintText: 'Enter OTP',
+                                                prefixIcon: Icon(Icons.vpn_key),
+                                                enabledBorder:
+                                                    OutlineInputBorder(
+                                                        borderSide: BorderSide(
+                                                            color:
+                                                                Colors.grey)),
+                                                border: OutlineInputBorder(),
+                                              ),
+                                              onChanged: (val) {
+                                                setState(() {
+                                                  this.smsCode = val;
+                                                });
+                                              },
+                                            ))
+                                      ])
+                                : Container(),
+                            SizedBox(height: 20),
+                            Align(
+                              alignment: Alignment.center,
+                              child: Container(
+                                height: 46,
+                                width: 160,
+                                child: RaisedButton(
+                                  onPressed: () {
+                                    AuthService().savePhoneNumber(this.phoneNo);
+                                    codeSent
+                                        ? AuthService().signInWithOTP(
+                                            smsCode, verificationId)
+                                        : verifyPhone(phoneNo);
+                                  },
+                                  child: codeSent
+                                      ? Text(
+                                          'Continue',
+                                          style: TextStyle(fontSize: 20),
+                                        )
+                                      : Text(
+                                          'Verify',
+                                          style: TextStyle(fontSize: 20),
+                                        ),
+                                  color: Color(0XFF303f9f),
+                                  textColor: Colors.white,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(30.0),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            SizedBox(height: 12),
+                            SizedBox(height: 18),
+                          ]))))
+            ]))));
+  }
 
   /* _loginSocialMediaBtn(IconData icon, Color bgColor) {
       return SizedBox.fromSize(
@@ -283,7 +301,8 @@ return Scaffold(
         ),
       );
     }
-*/ Future<void> verifyPhone(phoneNo) async {
+*/
+  Future<void> verifyPhone(phoneNo) async {
     final PhoneVerificationCompleted verified = (AuthCredential authResult) {
       AuthService().signIn(authResult);
     };
@@ -311,8 +330,8 @@ return Scaffold(
         verificationFailed: verificationfailed,
         codeSent: smsSent,
         codeAutoRetrievalTimeout: autoTimeout);
-  
-}
+  }
+
   _inputTextField(hintText, bool obscuretext) {
     return Container(
       height: 56,
