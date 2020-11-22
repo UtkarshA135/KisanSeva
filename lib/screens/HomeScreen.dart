@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:kisanseva/screens/diseaseDetection/modalHelper.dart';
 import 'package:kisanseva/screens/feed/feed_page.dart';
 import 'package:kisanseva/screens/rent_tools/display_rent_tools.dart';
 import 'package:kisanseva/screens/smartConnect/smartConnect.dart';
@@ -116,7 +117,9 @@ class _HomeScreenState extends State<HomeScreen> {
   List<Widget> _buildScreens() {
     return [
       DisplayRentTools(),
-      Container(), //TODO add disease detection
+      // Container(), //TODO add disease detection
+      // MyHomePage(),
+      Disease(), //TODO add disease detection
       Container(),
       smartConnect(), //TODO add yield prediction
       Feed() //TODO add feed

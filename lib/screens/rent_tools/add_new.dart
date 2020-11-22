@@ -15,50 +15,50 @@ class AddItem extends StatefulWidget {
 
 class _AddItemState extends State<AddItem> {
   var imageFile;
-  List<Asset> multiImageList = List<Asset>();
+  // List<Asset> multiImageList = List<Asset>();
 
   final logger = Logger();
   final addRentToolsCtrl = Get.put(AddRentToolsCtrl());
-  Future<void> loadAssets() async {
-    logger.d("loadAssets called");
-    // print("======================================loadAssets called");
+  // Future<void> loadAssets() async {
+  //   logger.d("loadAssets called");
+  //   // print("======================================loadAssets called");
 
-    List<Asset> imageList = List<Asset>();
-    String error = 'No Error Dectected';
+  //   List<Asset> imageList = List<Asset>();
+  //   String error = 'No Error Dectected';
 
-    try {
-      imageList = await MultiImagePicker.pickImages(
-        // materialOptions:  MaterialOptions(takePhotoIcon: "chat"),
-        maxImages: 5,
-        enableCamera: true,
-        selectedAssets: imageList,
-        cupertinoOptions: CupertinoOptions(takePhotoIcon: "chat"),
-        materialOptions: MaterialOptions(
-          actionBarColor: "#abcdef",
-          actionBarTitle: "Example App",
-          allViewTitle: "All Photos",
-          useDetailsView: false,
-          selectCircleStrokeColor: "#000000",
-          // startInAllView: true,
-          // useDetailsView :true,
-        ),
-      );
-    } on NoImagesSelectedException catch (e) {
-      // User pressed cancel, update ui or show alert
-      logger.d('image not selected : error iis : $e');
-    } on Exception catch (e) {
-      error = e.toString();
-    }
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
-    if (!mounted) return;
+  //   try {
+  //     imageList = await MultiImagePicker.pickImages(
+  //       // materialOptions:  MaterialOptions(takePhotoIcon: "chat"),
+  //       maxImages: 5,
+  //       enableCamera: true,
+  //       selectedAssets: imageList,
+  //       cupertinoOptions: CupertinoOptions(takePhotoIcon: "chat"),
+  //       materialOptions: MaterialOptions(
+  //         actionBarColor: "#abcdef",
+  //         actionBarTitle: "Example App",
+  //         allViewTitle: "All Photos",
+  //         useDetailsView: false,
+  //         selectCircleStrokeColor: "#000000",
+  //         // startInAllView: true,
+  //         // useDetailsView :true,
+  //       ),
+  //     );
+  //   } on NoImagesSelectedException catch (e) {
+  //     // User pressed cancel, update ui or show alert
+  //     logger.d('image not selected : error iis : $e');
+  //   } on Exception catch (e) {
+  //     error = e.toString();
+  //   }
+  //   // If the widget was removed from the tree while the asynchronous platform
+  //   // message was in flight, we want to discard the reply rather than calling
+  //   // setState to update our non-existent appearance.
+  //   if (!mounted) return;
 
-    setState(() {
-      multiImageList = imageList;
-      // _error = error;
-    });
-  }
+  //   setState(() {
+  //     multiImageList = imageList;
+  //     // _error = error;
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
