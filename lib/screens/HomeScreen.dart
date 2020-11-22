@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kisanseva/screens/diseaseDetection/modalHelper.dart';
 import 'package:kisanseva/screens/rent_tools/my_home_page.dart';
 import 'package:kisanseva/screens/smartConnect.dart';
 import 'package:kisanseva/services/authservice.dart';
@@ -57,6 +58,18 @@ class _HomeScreenState extends State<HomeScreen> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => MyHomePage()),
+                );
+              },
+            ),
+          ),
+            Center(
+            child: RaisedButton(
+              color: Colors.yellow,
+              child: Text("Plant Disease"),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Disease()),
                 );
               },
             ),
