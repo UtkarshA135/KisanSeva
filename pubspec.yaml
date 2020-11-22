@@ -36,7 +36,8 @@ dependencies:
   image: ^2.1.4
   tflite: ^1.0.5
   fluttertoast: ^4.0.1
- 
+  persistent_bottom_nav_bar:
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

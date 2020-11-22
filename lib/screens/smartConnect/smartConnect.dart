@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kisanseva/screens/smartConnect/BidPage.dart';
 
 // ignore: camel_case_types
 class smartConnect extends StatefulWidget {
@@ -41,7 +42,7 @@ class _smartConnectState extends State<smartConnect> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
                           Container(
-                            height: 220,
+                            height: 230,
                             width: 150,
                             decoration: BoxDecoration(
                                 border: Border.all(
@@ -87,56 +88,54 @@ class _smartConnectState extends State<smartConnect> {
                                           BorderRadius.all(Radius.circular(5))),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.all(10.0),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    children: <Widget>[
-                                      Container(
-                                        width: 50,
-                                        height: 30,
-                                        decoration: BoxDecoration(
-                                          border: Border.all(
-                                            color: Colors.white,
-                                            width: 2,
-                                          ),
-                                        ),
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(5.0),
-                                          child: Text("MSP"),
+                                  padding: const EdgeInsets.only(top: 4.0),
+                                  child: Container(
+                                    width: 50,
+                                    height: 20,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
+                                        color: Colors.white,
+                                        width: 2,
+                                      ),
+                                    ),
+                                    child: Align(
+                                      alignment: Alignment.center,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(3.0),
+                                        child: Text(
+                                          "MSP",
+                                          style: TextStyle(
+                                              fontSize: 10,
+                                              fontWeight: FontWeight.bold),
                                         ),
                                       ),
-                                      new InkWell(
-                                        onTap: () {},
-                                        child: new Container(
-                                          width: 60,
-                                          height: 40.0,
-                                          decoration: new BoxDecoration(
-                                            color: Colors.blueAccent,
-                                            border: new Border.all(
-                                                color: Colors.white,
-                                                width: 2.0),
-                                            borderRadius:
-                                                new BorderRadius.circular(10.0),
-                                          ),
-                                          child: new Center(
-                                            child: new Text(
-                                              'BID',
-                                              style: new TextStyle(
-                                                  fontSize: 12.0,
-                                                  color: Colors.white),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
+                                    ),
                                   ),
-                                )
+                                ),
+                                RaisedButton(
+                                  color: Colors.blue,
+                                  elevation: 3,
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => bidPage(
+                                              "https://static.hanos.com/sys-master/productimages/h3e/h60/9264319365150/34191901.jpg_914Wx914H",
+                                              "MSP",
+                                              "Desc")),
+                                    );
+                                  },
+                                  child: new Text(
+                                    'BID',
+                                    style: new TextStyle(
+                                        fontSize: 12.0, color: Colors.white),
+                                  ),
+                                ),
                               ],
                             ),
                           ),
                           Container(
-                            height: 220,
+                            height: 230,
                             width: 150,
                             decoration: BoxDecoration(
                                 border: Border.all(
@@ -182,51 +181,49 @@ class _smartConnectState extends State<smartConnect> {
                                           BorderRadius.all(Radius.circular(5))),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.all(10.0),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    children: <Widget>[
-                                      Container(
-                                        width: 50,
-                                        height: 30,
-                                        decoration: BoxDecoration(
-                                          border: Border.all(
-                                            color: Colors.white,
-                                            width: 2,
-                                          ),
-                                        ),
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(5.0),
-                                          child: Text("MSP"),
+                                  padding: const EdgeInsets.only(top: 4.0),
+                                  child: Container(
+                                    width: 50,
+                                    height: 20,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
+                                        color: Colors.white,
+                                        width: 2,
+                                      ),
+                                    ),
+                                    child: Align(
+                                      alignment: Alignment.center,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(3.0),
+                                        child: Text(
+                                          "MSP",
+                                          style: TextStyle(
+                                              fontSize: 10,
+                                              fontWeight: FontWeight.bold),
                                         ),
                                       ),
-                                      new InkWell(
-                                        onTap: () {},
-                                        child: new Container(
-                                          width: 60,
-                                          height: 40.0,
-                                          decoration: new BoxDecoration(
-                                            color: Colors.blueAccent,
-                                            border: new Border.all(
-                                                color: Colors.white,
-                                                width: 2.0),
-                                            borderRadius:
-                                                new BorderRadius.circular(10.0),
-                                          ),
-                                          child: new Center(
-                                            child: new Text(
-                                              'BID',
-                                              style: new TextStyle(
-                                                  fontSize: 12.0,
-                                                  color: Colors.white),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
+                                    ),
                                   ),
-                                )
+                                ),
+                                RaisedButton(
+                                  color: Colors.blue,
+                                  elevation: 3,
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => bidPage(
+                                              "https://www.kampexport.com/sites/kampexport.com/files/images/legume/image/tomates_256_1.jpg",
+                                              "MSP",
+                                              "Desc")),
+                                    );
+                                  },
+                                  child: new Text(
+                                    'BID',
+                                    style: new TextStyle(
+                                        fontSize: 12.0, color: Colors.white),
+                                  ),
+                                ),
                               ],
                             ),
                           ),
@@ -239,7 +236,7 @@ class _smartConnectState extends State<smartConnect> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
                           Container(
-                            height: 220,
+                            height: 230,
                             width: 150,
                             decoration: BoxDecoration(
                                 border: Border.all(
@@ -285,56 +282,55 @@ class _smartConnectState extends State<smartConnect> {
                                           BorderRadius.all(Radius.circular(5))),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.all(10.0),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    children: <Widget>[
-                                      Container(
-                                        width: 50,
-                                        height: 30,
-                                        decoration: BoxDecoration(
-                                          border: Border.all(
-                                            color: Colors.white,
-                                            width: 2,
-                                          ),
-                                        ),
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(5.0),
-                                          child: Text("MSP"),
+                                  padding: const EdgeInsets.only(top: 4.0),
+                                  child: Container(
+                                    width: 50,
+                                    height: 20,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
+                                        color: Colors.white,
+                                        width: 2,
+                                      ),
+                                    ),
+                                    child: Align(
+                                      alignment: Alignment.center,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(3.0),
+                                        child: Text(
+                                          "MSP",
+                                          style: TextStyle(
+                                              fontSize: 10,
+                                              fontWeight: FontWeight.bold),
                                         ),
                                       ),
-                                      new InkWell(
-                                        onTap: () {},
-                                        child: new Container(
-                                          width: 60,
-                                          height: 40.0,
-                                          decoration: new BoxDecoration(
-                                            color: Colors.blueAccent,
-                                            border: new Border.all(
-                                                color: Colors.white,
-                                                width: 2.0),
-                                            borderRadius:
-                                                new BorderRadius.circular(10.0),
-                                          ),
-                                          child: new Center(
-                                            child: new Text(
-                                              'BID',
-                                              style: new TextStyle(
-                                                  fontSize: 12.0,
-                                                  color: Colors.white),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
+                                    ),
                                   ),
-                                )
+                                ),
+                                RaisedButton(
+                                  color: Colors.blue,
+                                  elevation: 3,
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => bidPage(
+                                              "https://shakhattownmall.com/admin/uploads/(56)2.jpg",
+                                              "MSP",
+                                              "Desc")),
+                                    );
+                                  },
+                                  child: new Text(
+                                    'BID',
+                                    style: new TextStyle(
+                                        fontSize: 12.0, color: Colors.white),
+                                  ),
+                                ),
                               ],
                             ),
                           ),
+
                           Container(
-                            height: 220,
+                            height: 230,
                             width: 150,
                             decoration: BoxDecoration(
                                 border: Border.all(
@@ -380,64 +376,63 @@ class _smartConnectState extends State<smartConnect> {
                                           BorderRadius.all(Radius.circular(5))),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.all(10.0),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    children: <Widget>[
-                                      Container(
-                                        width: 50,
-                                        height: 30,
-                                        decoration: BoxDecoration(
-                                          border: Border.all(
-                                            color: Colors.white,
-                                            width: 2,
-                                          ),
-                                        ),
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(5.0),
-                                          child: Text("MSP"),
+                                  padding: const EdgeInsets.only(top: 4.0),
+                                  child: Container(
+                                    width: 50,
+                                    height: 20,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
+                                        color: Colors.white,
+                                        width: 2,
+                                      ),
+                                    ),
+                                    child: Align(
+                                      alignment: Alignment.center,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(3.0),
+                                        child: Text(
+                                          "MSP",
+                                          style: TextStyle(
+                                              fontSize: 10,
+                                              fontWeight: FontWeight.bold),
                                         ),
                                       ),
-                                      new InkWell(
-                                        onTap: () {},
-                                        child: new Container(
-                                          width: 60,
-                                          height: 40.0,
-                                          decoration: new BoxDecoration(
-                                            color: Colors.blueAccent,
-                                            border: new Border.all(
-                                                color: Colors.white,
-                                                width: 2.0),
-                                            borderRadius:
-                                                new BorderRadius.circular(10.0),
-                                          ),
-                                          child: new Center(
-                                            child: new Text(
-                                              'BID',
-                                              style: new TextStyle(
-                                                  fontSize: 12.0,
-                                                  color: Colors.white),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
+                                    ),
                                   ),
-                                )
+                                ),
+                                RaisedButton(
+                                  color: Colors.blue,
+                                  elevation: 3,
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => bidPage(
+                                              "https://images.freshop.com/5181/a9e5889ca99e956d3d685747696415ed_medium.png",
+                                              "MSP",
+                                              "Desc")),
+                                    );
+                                  },
+                                  child: new Text(
+                                    'BID',
+                                    style: new TextStyle(
+                                        fontSize: 12.0, color: Colors.white),
+                                  ),
+                                ),
                               ],
                             ),
                           ),
                         ],
                       ),
                     ),
+
                     Padding(
                       padding: EdgeInsets.only(left: 10, top: 20, bottom: 10),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
                           Container(
-                            height: 220,
+                            height: 230,
                             width: 150,
                             decoration: BoxDecoration(
                                 border: Border.all(
@@ -461,7 +456,7 @@ class _smartConnectState extends State<smartConnect> {
                                       ),
                                       child: ClipOval(
                                           child: Image.network(
-                                        "https://static.hanos.com/sys-master/productimages/h8d/h43/8896013631518/342.30207.jpg_256Wx256H",
+                                      "https://static.hanos.com/sys-master/productimages/h8d/h43/8896013631518/342.30207.jpg_256Wx256H",
                                         fit: BoxFit.cover,
                                         width: 50,
                                         height: 60,
@@ -483,56 +478,55 @@ class _smartConnectState extends State<smartConnect> {
                                           BorderRadius.all(Radius.circular(5))),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.all(10.0),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    children: <Widget>[
-                                      Container(
-                                        width: 50,
-                                        height: 30,
-                                        decoration: BoxDecoration(
-                                          border: Border.all(
-                                            color: Colors.white,
-                                            width: 2,
-                                          ),
-                                        ),
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(5.0),
-                                          child: Text("MSP"),
+                                  padding: const EdgeInsets.only(top: 4.0),
+                                  child: Container(
+                                    width: 50,
+                                    height: 20,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
+                                        color: Colors.white,
+                                        width: 2,
+                                      ),
+                                    ),
+                                    child: Align(
+                                      alignment: Alignment.center,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(3.0),
+                                        child: Text(
+                                          "MSP",
+                                          style: TextStyle(
+                                              fontSize: 10,
+                                              fontWeight: FontWeight.bold),
                                         ),
                                       ),
-                                      new InkWell(
-                                        onTap: () {},
-                                        child: new Container(
-                                          width: 60,
-                                          height: 40.0,
-                                          decoration: new BoxDecoration(
-                                            color: Colors.blueAccent,
-                                            border: new Border.all(
-                                                color: Colors.white,
-                                                width: 2.0),
-                                            borderRadius:
-                                                new BorderRadius.circular(10.0),
-                                          ),
-                                          child: new Center(
-                                            child: new Text(
-                                              'BID',
-                                              style: new TextStyle(
-                                                  fontSize: 12.0,
-                                                  color: Colors.white),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
+                                    ),
                                   ),
-                                )
+                                ),
+                                RaisedButton(
+                                  color: Colors.blue,
+                                  elevation: 3,
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => bidPage(
+                                              "https://static.hanos.com/sys-master/productimages/h8d/h43/8896013631518/342.30207.jpg_256Wx256H",
+                                              "MSP",
+                                              "Desc")),
+                                    );
+                                  },
+                                  child: new Text(
+                                    'BID',
+                                    style: new TextStyle(
+                                        fontSize: 12.0, color: Colors.white),
+                                  ),
+                                ),
                               ],
                             ),
                           ),
+
                           Container(
-                            height: 220,
+                            height: 230,
                             width: 150,
                             decoration: BoxDecoration(
                                 border: Border.all(
@@ -578,51 +572,49 @@ class _smartConnectState extends State<smartConnect> {
                                           BorderRadius.all(Radius.circular(5))),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.all(10.0),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    children: <Widget>[
-                                      Container(
-                                        width: 50,
-                                        height: 30,
-                                        decoration: BoxDecoration(
-                                          border: Border.all(
-                                            color: Colors.white,
-                                            width: 2,
-                                          ),
-                                        ),
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(5.0),
-                                          child: Text("MSP"),
+                                  padding: const EdgeInsets.only(top: 4.0),
+                                  child: Container(
+                                    width: 50,
+                                    height: 20,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
+                                        color: Colors.white,
+                                        width: 2,
+                                      ),
+                                    ),
+                                    child: Align(
+                                      alignment: Alignment.center,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(3.0),
+                                        child: Text(
+                                          "MSP",
+                                          style: TextStyle(
+                                              fontSize: 10,
+                                              fontWeight: FontWeight.bold),
                                         ),
                                       ),
-                                      new InkWell(
-                                        onTap: () {},
-                                        child: new Container(
-                                          width: 60,
-                                          height: 40.0,
-                                          decoration: new BoxDecoration(
-                                            color: Colors.blueAccent,
-                                            border: new Border.all(
-                                                color: Colors.white,
-                                                width: 2.0),
-                                            borderRadius:
-                                                new BorderRadius.circular(10.0),
-                                          ),
-                                          child: new Center(
-                                            child: new Text(
-                                              'BID',
-                                              style: new TextStyle(
-                                                  fontSize: 12.0,
-                                                  color: Colors.white),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
+                                    ),
                                   ),
-                                )
+                                ),
+                                RaisedButton(
+                                  color: Colors.blue,
+                                  elevation: 3,
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => bidPage(
+                                              "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSIIHtgkZeeOKMRbdaYMlpfsRLZvWJhyyKW4w&usqp=CAU",
+                                              "MSP",
+                                              "Desc")),
+                                    );
+                                  },
+                                  child: new Text(
+                                    'BID',
+                                    style: new TextStyle(
+                                        fontSize: 12.0, color: Colors.white),
+                                  ),
+                                ),
                               ],
                             ),
                           ),
@@ -635,7 +627,7 @@ class _smartConnectState extends State<smartConnect> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
                           Container(
-                            height: 220,
+                            height: 230,
                             width: 150,
                             decoration: BoxDecoration(
                                 border: Border.all(
@@ -681,56 +673,55 @@ class _smartConnectState extends State<smartConnect> {
                                           BorderRadius.all(Radius.circular(5))),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.all(10.0),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    children: <Widget>[
-                                      Container(
-                                        width: 50,
-                                        height: 30,
-                                        decoration: BoxDecoration(
-                                          border: Border.all(
-                                            color: Colors.white,
-                                            width: 2,
-                                          ),
-                                        ),
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(5.0),
-                                          child: Text("MSP"),
+                                  padding: const EdgeInsets.only(top: 4.0),
+                                  child: Container(
+                                    width: 50,
+                                    height: 20,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
+                                        color: Colors.white,
+                                        width: 2,
+                                      ),
+                                    ),
+                                    child: Align(
+                                      alignment: Alignment.center,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(3.0),
+                                        child: Text(
+                                          "MSP",
+                                          style: TextStyle(
+                                              fontSize: 10,
+                                              fontWeight: FontWeight.bold),
                                         ),
                                       ),
-                                      new InkWell(
-                                        onTap: () {},
-                                        child: new Container(
-                                          width: 60,
-                                          height: 40.0,
-                                          decoration: new BoxDecoration(
-                                            color: Colors.blueAccent,
-                                            border: new Border.all(
-                                                color: Colors.white,
-                                                width: 2.0),
-                                            borderRadius:
-                                                new BorderRadius.circular(10.0),
-                                          ),
-                                          child: new Center(
-                                            child: new Text(
-                                              'BID',
-                                              style: new TextStyle(
-                                                  fontSize: 12.0,
-                                                  color: Colors.white),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
+                                    ),
                                   ),
-                                )
+                                ),
+                                RaisedButton(
+                                  color: Colors.blue,
+                                  elevation: 3,
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => bidPage(
+                                              "https://www.searates.com/design/images/temperature/tangerines.jpg",
+                                              "MSP",
+                                              "Desc")),
+                                    );
+                                  },
+                                  child: new Text(
+                                    'BID',
+                                    style: new TextStyle(
+                                        fontSize: 12.0, color: Colors.white),
+                                  ),
+                                ),
                               ],
                             ),
                           ),
+
                           Container(
-                            height: 220,
+                            height: 230,
                             width: 150,
                             decoration: BoxDecoration(
                                 border: Border.all(
@@ -776,51 +767,49 @@ class _smartConnectState extends State<smartConnect> {
                                           BorderRadius.all(Radius.circular(5))),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.all(10.0),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    children: <Widget>[
-                                      Container(
-                                        width: 50,
-                                        height: 30,
-                                        decoration: BoxDecoration(
-                                          border: Border.all(
-                                            color: Colors.white,
-                                            width: 2,
-                                          ),
-                                        ),
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(5.0),
-                                          child: Text("MSP"),
+                                  padding: const EdgeInsets.only(top: 4.0),
+                                  child: Container(
+                                    width: 50,
+                                    height: 20,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
+                                        color: Colors.white,
+                                        width: 2,
+                                      ),
+                                    ),
+                                    child: Align(
+                                      alignment: Alignment.center,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(3.0),
+                                        child: Text(
+                                          "MSP",
+                                          style: TextStyle(
+                                              fontSize: 10,
+                                              fontWeight: FontWeight.bold),
                                         ),
                                       ),
-                                      new InkWell(
-                                        onTap: () {},
-                                        child: new Container(
-                                          width: 60,
-                                          height: 40.0,
-                                          decoration: new BoxDecoration(
-                                            color: Colors.blueAccent,
-                                            border: new Border.all(
-                                                color: Colors.white,
-                                                width: 2.0),
-                                            borderRadius:
-                                                new BorderRadius.circular(10.0),
-                                          ),
-                                          child: new Center(
-                                            child: new Text(
-                                              'BID',
-                                              style: new TextStyle(
-                                                  fontSize: 12.0,
-                                                  color: Colors.white),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
+                                    ),
                                   ),
-                                )
+                                ),
+                                RaisedButton(
+                                  color: Colors.blue,
+                                  elevation: 3,
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => bidPage(
+                                              "https://agro-v.com/images/content/products/categories/zernovye_sypuchie/pshenitsa_kormovaya_6_klass.png",
+                                              "MSP",
+                                              "Desc")),
+                                    );
+                                  },
+                                  child: new Text(
+                                    'BID',
+                                    style: new TextStyle(
+                                        fontSize: 12.0, color: Colors.white),
+                                  ),
+                                ),
                               ],
                             ),
                           ),
