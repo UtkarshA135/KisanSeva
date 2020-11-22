@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kisanseva/models/rent_tools_model.dart';
 import 'package:logger/logger.dart';
@@ -12,6 +13,7 @@ class AddRentToolsCtrl extends GetxController {
   RentToolsModel rentToolsModel = RentToolsModel();
   String picDownloadUrl = '';
   var logger = Logger(printer: PrettyPrinter());
+  final isLoading = false.obs;
   // Firestore firestore = FirebaseFirestore.instance;
 
   Future<dynamic> postImage(File imageFile) async {
@@ -27,17 +29,35 @@ class AddRentToolsCtrl extends GetxController {
     print(storageTaskSnapshot.ref.getDownloadURL());
     print('here 3');
 
-    storageReference.getDownloadURL().then((fileURL) {
-      // setState(() {
-      rentToolsModel.toolImage = fileURL;
-      // });
-    });
+    // storageReference.getDownloadURL().then((fileURL) {
+    //   // setState(() {
+    //   rentToolsModel.toolImage = fileURL;
+    //   // });
+    // });
     logger.d("toolImage url=${rentToolsModel.toolImage}");
     return storageTaskSnapshot.ref.getDownloadURL();
   }
 
   addRentTools(imageFile) async {
-    await postImage(imageFile);
+    // isLoading(true);
+    Get.dialog(
+      Material(
+        child: Padding(
+          padding: const EdgeInsets.only(top: 300.0),
+          child: Center(
+            child: Column(
+              // height: 500,
+              children: [
+                Center(child: Text("Uploading... Please wait")),
+                CircularProgressIndicator(),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+    await postImage(imageFile)
+        .then((value) => rentToolsModel.toolImage = value);
     logger.d("inside addRentTools ${rentToolsModel?.toJson()}");
     await Firestore.instance
         .collection("rentTools")
@@ -47,6 +67,8 @@ class AddRentToolsCtrl extends GetxController {
     //   collectionName: 'examsResources',
     //   data: _examModel.toJson(),
     // );
-    // Get.back();
+    Get.back();
+    // isLoading(false);
+    Get.back();
   }
 }

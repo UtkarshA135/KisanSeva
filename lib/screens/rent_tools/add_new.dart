@@ -139,6 +139,9 @@ class _AddItemState extends State<AddItem> {
                 // Navigator.pop(context);
                 // await addRentToolsCtrl.postImage(imageFile);
                 await addRentToolsCtrl.addRentTools(imageFile);
+                // if (addRentToolsCtrl.isLoading.value) {
+                //   Get.dialog(Container(child: Text("Please wait...Uploading")));
+                // }
                 Navigator.pop(context);
               },
               shape: StadiumBorder(),

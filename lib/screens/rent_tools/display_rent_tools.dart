@@ -176,6 +176,7 @@ class DisplayRentTools extends StatelessWidget {
                   if (snapshot.hasData) {
                     //do something with the data
                     return ListView.builder(
+                      physics: NeverScrollableScrollPhysics(),
                       itemCount: snapshot.data.documents.length,
                       shrinkWrap: true,
                       itemBuilder: (context, index) {
