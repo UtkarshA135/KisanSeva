@@ -112,34 +112,27 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             SizedBox(height: 20,),
             _signInButton()
-
             ],
           )),
      ) );
-
   }
-
   Future<void> verifyPhone(phoneNo) async {
     final PhoneVerificationCompleted verified = (AuthCredential authResult) {
       AuthService().signIn(authResult);
     };
-
     final PhoneVerificationFailed verificationfailed =
         (AuthException authException) {
       print('${authException.message}');
     };
-
     final PhoneCodeSent smsSent = (String verId, [int forceResend]) {
       this.verificationId = verId;
       setState(() {
         this.codeSent = true;
       });
     };
-
     final PhoneCodeAutoRetrievalTimeout autoTimeout = (String verId) {
       this.verificationId = verId;
     };
-
     await FirebaseAuth.instance.verifyPhoneNumber(
         phoneNumber: phoneNo,
         timeout: const Duration(seconds: 5),
@@ -148,8 +141,6 @@ class _LoginScreenState extends State<LoginScreen> {
         codeSent: smsSent,
         codeAutoRetrievalTimeout: autoTimeout);
   
-
-
 }*/
     return Scaffold(
         backgroundColor: Color(0XFF3F51b5),

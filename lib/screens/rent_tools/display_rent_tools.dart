@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:kisanseva/services/authservice.dart';
 
 import 'add_new.dart';
 import 'desc_page.dart';
@@ -43,6 +44,9 @@ class DisplayRentTools extends StatelessWidget {
     ];
 
     return Scaffold(
+      drawer: Drawer(
+        
+      ),
       appBar: AppBar(
         title: Text("SmartFarm"),
         actions: [
@@ -50,7 +54,20 @@ class DisplayRentTools extends StatelessWidget {
             icon: Icon(Icons.notifications),
             color: Colors.white,
             onPressed: () {},
-          )
+          ),
+                       IconButton(
+                icon: Icon(
+                  Icons.exit_to_app,
+                  color: Colors.black,
+                ),
+                onPressed: () async {
+                  AuthService().signOut();
+                  Navigator.pushReplacement(
+                      context,
+                      new MaterialPageRoute(
+                          builder: (context) => AuthService().handleAuth()));
+                },
+              )
         ],
       ),
       body: Container(

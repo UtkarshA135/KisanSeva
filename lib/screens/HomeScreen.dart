@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:kisanseva/screens/Yield/yield.dart';
 import 'package:kisanseva/screens/diseaseDetection/modalHelper.dart';
 import 'package:kisanseva/screens/feed/feed_page.dart';
 import 'package:kisanseva/screens/rent_tools/display_rent_tools.dart';
@@ -120,8 +121,12 @@ class _HomeScreenState extends State<HomeScreen> {
       // Container(), //TODO add disease detection
       // MyHomePage(),
       Disease(), //TODO add disease detection
-      Container(),
+      // Container(),
+      Yield(),
       SmartConnect(), //TODO add yield prediction
+      // MyHomePage(),
+      //  Disease(), //TODO add disease detection
+      // smartConnect(), //TODO add yield prediction
       Feed() //TODO add feed
     ];
   }

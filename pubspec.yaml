@@ -38,8 +38,8 @@ dependencies:
   persistent_bottom_nav_bar: any
   provider: ^4.0.5
   multi_image_picker: ^4.7.14
-
   page_transition: ^1.1.7+2
+  firebase_database:
 dev_dependencies:
   flutter_test:
     sdk: flutter
