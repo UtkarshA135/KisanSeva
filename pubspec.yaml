@@ -23,19 +23,23 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  cloud_firestore: null
+  cloud_firestore:
   cupertino_icons: ^0.1.3
-  firebase_storage: ^3.1.0
-  firebase_auth: ^0.15.3
-  firebase_core: ^0.4.0+9
+  firebase_storage: 
+  firebase_auth: 
+  firebase_core: 
   shared_preferences: ^0.5.6+3
   image_picker: ^0.6.5+2
   image: ^2.1.4
   tflite: ^1.0.5
   fluttertoast: ^4.0.1
-  get: ^3.17.1
-  logger: ^0.9.4
+  geolocator:
+  intl:
+  get:
   persistent_bottom_nav_bar: any
+ 
+  logger: ^0.9.4
+  
   provider: ^4.0.5
   multi_image_picker: ^4.7.14
   page_transition: ^1.1.7+2

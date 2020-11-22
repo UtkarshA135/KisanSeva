@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kisanseva/models/rent_tools_model.dart';
 import 'package:kisanseva/screens/rent_tools/rent_tools_template.dart';
+import 'package:kisanseva/screens/weather/screens/homeScreen.dart';
 import 'package:kisanseva/services/authservice.dart';
 
 import 'add_new.dart';
@@ -64,6 +65,19 @@ class DisplayRentTools extends StatelessWidget {
                   context,
                   new MaterialPageRoute(
                       builder: (context) => AuthService().handleAuth()));
+            },
+          ),
+           IconButton(
+            icon: Icon(
+              Icons.cloud,
+              color: Colors.black,
+            ),
+            onPressed: () async {
+            //  AuthService().signOut();
+              Navigator.push(
+                  context,
+                  new MaterialPageRoute(
+                      builder: (context) => WHomescreen()));
             },
           )
         ],

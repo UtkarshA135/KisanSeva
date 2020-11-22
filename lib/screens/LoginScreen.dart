@@ -1,8 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:kisanseva/screens/HomeScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:kisanseva/services/authservice.dart';
+import 'package:kisanseva/services/firebaseUserProvider.dart';
 import 'package:kisanseva/utils/style.dart';
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -10,8 +14,15 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  FirebaseUser user;
+   void initState() {
+    // TODO: implement initState
+    user= Provider.of<FirebaseUserProvider>(context, listen: false)
+        .user; 
+    super.initState();
+  }
   final formKey = new GlobalKey<FormState>();
-
+final CollectionReference userCollection = Firestore.instance.collection('users');
   String phoneNo, verificationId, smsCode;
 
   bool codeSent = false;
@@ -236,6 +247,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                         ? AuthService().signInWithOTP(
                                             smsCode, verificationId)
                                         : verifyPhone(phoneNo);
+                                      
+                                          saveData();
                                   },
                                   child: codeSent
                                       ? Text(
@@ -313,6 +326,7 @@ class _LoginScreenState extends State<LoginScreen> {
     final PhoneCodeAutoRetrievalTimeout autoTimeout = (String verId) {
       this.verificationId = verId;
     };
+    
 
     await FirebaseAuth.instance.verifyPhoneNumber(
         phoneNumber: phoneNo,
@@ -322,7 +336,14 @@ class _LoginScreenState extends State<LoginScreen> {
         codeSent: smsSent,
         codeAutoRetrievalTimeout: autoTimeout);
   }
-
+saveData()
+async{
+          SharedPreferences prefs=await SharedPreferences.getInstance();
+    String phno  = prefs.getString('Phone Number');
+   await userCollection.document(user.uid).setData({
+    "phno" :phno
+    });
+}
   _inputTextField(hintText, bool obscuretext) {
     return Container(
       height: 56,
