@@ -11,6 +11,7 @@ class FirebaseUserProvider extends ChangeNotifier{
   
   _getUser()async {
     this.user = await FirebaseAuth.instance.currentUser();
+    // this.user = await UserCredential.;
     notifyListeners();
         print('user active');
   }

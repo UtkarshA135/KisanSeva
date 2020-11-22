@@ -1,18 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:kisanseva/models/rent_tools_model.dart';
 
 class DescPage extends StatelessWidget {
-  final String name;
-  final String description;
-  final String cost;
-  final String img_url;
+  final RentToolsModel rentToolsModel;
 
-  const DescPage({
-    Key key,
-    this.name,
-    this.description,
-    this.cost,
-    this.img_url,
-  }) : super(key: key);
+  const DescPage({Key key, this.rentToolsModel}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +19,7 @@ class DescPage extends StatelessWidget {
                 height: 10,
               ),
               Image(
-                image: NetworkImage(img_url),
+                image: NetworkImage(rentToolsModel.toolImage),
                 height: 130,
                 width: 130,
                 fit: BoxFit.contain,
@@ -36,19 +28,19 @@ class DescPage extends StatelessWidget {
                 height: 10,
               ),
               Text(
-                name,
+                rentToolsModel.toolName,
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               Text(
-                "$cost/hr",
+                rentToolsModel.toolPricePerDay,
                 style: TextStyle(
                   fontSize: 16,
                 ),
               ),
-              Text(description),
+              Text(rentToolsModel.toolDescription),
               SizedBox(
                 height: 10,
               ),
