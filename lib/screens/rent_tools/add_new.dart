@@ -1,7 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
+import 'package:get/get.dart';
 
 import 'package:image_picker/image_picker.dart';
+import 'package:logger/logger.dart';
+import 'package:multi_image_picker/multi_image_picker.dart';
+
+import 'add_rent_tools_ctrl.dart';
 
 class AddItem extends StatefulWidget {
   @override
@@ -10,6 +15,51 @@ class AddItem extends StatefulWidget {
 
 class _AddItemState extends State<AddItem> {
   var imageFile;
+  // List<Asset> multiImageList = List<Asset>();
+
+  final logger = Logger();
+  final addRentToolsCtrl = Get.put(AddRentToolsCtrl());
+  // Future<void> loadAssets() async {
+  //   logger.d("loadAssets called");
+  //   // print("======================================loadAssets called");
+
+  //   List<Asset> imageList = List<Asset>();
+  //   String error = 'No Error Dectected';
+
+  //   try {
+  //     imageList = await MultiImagePicker.pickImages(
+  //       // materialOptions:  MaterialOptions(takePhotoIcon: "chat"),
+  //       maxImages: 5,
+  //       enableCamera: true,
+  //       selectedAssets: imageList,
+  //       cupertinoOptions: CupertinoOptions(takePhotoIcon: "chat"),
+  //       materialOptions: MaterialOptions(
+  //         actionBarColor: "#abcdef",
+  //         actionBarTitle: "Example App",
+  //         allViewTitle: "All Photos",
+  //         useDetailsView: false,
+  //         selectCircleStrokeColor: "#000000",
+  //         // startInAllView: true,
+  //         // useDetailsView :true,
+  //       ),
+  //     );
+  //   } on NoImagesSelectedException catch (e) {
+  //     // User pressed cancel, update ui or show alert
+  //     logger.d('image not selected : error iis : $e');
+  //   } on Exception catch (e) {
+  //     error = e.toString();
+  //   }
+  //   // If the widget was removed from the tree while the asynchronous platform
+  //   // message was in flight, we want to discard the reply rather than calling
+  //   // setState to update our non-existent appearance.
+  //   if (!mounted) return;
+
+  //   setState(() {
+  //     multiImageList = imageList;
+  //     // _error = error;
+  //   });
+  // }
+
   @override
   Widget build(BuildContext context) {
     void _getImage(bool fromCamera) async {
@@ -17,6 +67,7 @@ class _AddItemState extends State<AddItem> {
         imageFile = await ImagePicker.pickImage(source: ImageSource.camera);
         setState(() {
           this.imageFile = imageFile;
+          addRentToolsCtrl.rentToolsModel.toolImage = imageFile.toString();
         });
       } else {
         imageFile = await ImagePicker.pickImage(source: ImageSource.gallery);
@@ -50,8 +101,9 @@ class _AddItemState extends State<AddItem> {
                             icon: Icon(
                               Icons.camera_alt,
                             ),
-                            onPressed: () {
+                            onPressed: () async {
                               _getImage(true);
+                              // await loadAssets();
                             },
                           ),
                           IconButton(
@@ -83,8 +135,10 @@ class _AddItemState extends State<AddItem> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: RaisedButton(
-              onPressed: () {
-                Navigator.pop(context);
+              onPressed: () async {
+                // Navigator.pop(context);
+                // await addRentToolsCtrl.postImage(imageFile);
+                await addRentToolsCtrl.addRentTools(imageFile);
               },
               shape: StadiumBorder(),
               child: Text(

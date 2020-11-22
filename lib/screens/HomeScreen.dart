@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:kisanseva/screens/Yield/yield.dart';
 import 'package:kisanseva/screens/diseaseDetection/modalHelper.dart';
-import 'package:kisanseva/screens/rent_tools/my_home_page.dart';
+import 'package:kisanseva/screens/feed/feed_page.dart';
+import 'package:kisanseva/screens/rent_tools/display_rent_tools.dart';
 import 'package:kisanseva/screens/smartConnect/smartConnect.dart';
 import 'package:kisanseva/services/authservice.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
@@ -115,11 +117,17 @@ class _HomeScreenState extends State<HomeScreen> {
 
   List<Widget> _buildScreens() {
     return [
-      MyHomePage(),
-      Container(), //TODO add disease detection
-      Container(),
-      smartConnect(), //TODO add yield prediction
-      Container() //TODO add feed
+      DisplayRentTools(),
+      // Container(), //TODO add disease detection
+      // MyHomePage(),
+      Disease(), //TODO add disease detection
+      // Container(),
+      Yield(),
+      SmartConnect(), //TODO add yield prediction
+      // MyHomePage(),
+      //  Disease(), //TODO add disease detection
+      // smartConnect(), //TODO add yield prediction
+      Feed() //TODO add feed
     ];
   }
 

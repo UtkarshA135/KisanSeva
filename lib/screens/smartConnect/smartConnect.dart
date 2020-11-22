@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:kisanseva/screens/smartConnect/BidPage.dart';
 
 // ignore: camel_case_types
-class smartConnect extends StatefulWidget {
+class SmartConnect extends StatefulWidget {
   @override
   _smartConnectState createState() => _smartConnectState();
 }
 
 // ignore: camel_case_types
-class _smartConnectState extends State<smartConnect> {
+class _smartConnectState extends State<SmartConnect> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

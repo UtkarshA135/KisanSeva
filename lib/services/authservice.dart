@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:kisanseva/screens/LoginScreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +7,7 @@ import 'package:kisanseva/screens/HomeScreen.dart';
 
 class AuthService {
   //Handles Auth
+  final CollectionReference userCollection = Firestore.instance.collection('users');
   handleAuth() {
     return StreamBuilder(
         stream: FirebaseAuth.instance.onAuthStateChanged,
@@ -33,12 +35,14 @@ class AuthService {
   //SignIn
   signIn(AuthCredential authCreds) {
     FirebaseAuth.instance.signInWithCredential(authCreds);
+    print(authCreds);
   }
 
-  signInWithOTP(smsCode, verId) {
+  signInWithOTP(smsCode, verId) async{
     AuthCredential authCreds = PhoneAuthProvider.getCredential(
         verificationId: verId, smsCode: smsCode);
-    signIn(authCreds);
+   await signIn(authCreds);
+
   }
 
 
