@@ -121,7 +121,7 @@ class _HomeScreenState extends State<HomeScreen> {
       // MyHomePage(),
       Disease(), //TODO add disease detection
       Container(),
-      smartConnect(), //TODO add yield prediction
+      SmartConnect(), //TODO add yield prediction
       Feed() //TODO add feed
     ];
   }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:kisanseva/screens/smartConnect/add_crop_ctrl.dart';
 
 class AddCrop extends StatefulWidget {
   @override
@@ -8,6 +10,7 @@ class AddCrop extends StatefulWidget {
 
 class _AddCropState extends State<AddCrop> {
   var imageFile;
+  final addCropCtrl = Get.put(AddCropCtrl());
   @override
   Widget build(BuildContext context) {
     void _getImage(bool fromCamera) async {
@@ -15,6 +18,7 @@ class _AddCropState extends State<AddCrop> {
         imageFile = await ImagePicker.pickImage(source: ImageSource.camera);
         setState(() {
           this.imageFile = imageFile;
+          addCropCtrl.cropModel.cropImage = imageFile.toString();
         });
       } else {
         imageFile = await ImagePicker.pickImage(source: ImageSource.gallery);
@@ -84,7 +88,9 @@ class _AddCropState extends State<AddCrop> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: RaisedButton(
-              onPressed: () {
+              onPressed: () async {
+                // Navigator.pop(context);
+                await addCropCtrl.addCrop(imageFile);
                 Navigator.pop(context);
               },
               shape: StadiumBorder(),
@@ -106,7 +112,8 @@ class _AddCropState extends State<AddCrop> {
                 side: BorderSide(width: 5, color: Colors.green)),
             elevation: 10,
             child: Padding(
-              padding: const EdgeInsets.only(top:10.0,bottom: 10,left: 15,right: 15),
+              padding: const EdgeInsets.only(
+                  top: 10.0, bottom: 10, left: 15, right: 15),
               child: ListView(
                 padding: EdgeInsets.all(5),
                 shrinkWrap: true,
@@ -119,8 +126,12 @@ class _AddCropState extends State<AddCrop> {
                     height: 10,
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left:8.0,right:8,top:4,bottom: 4),
+                    padding: const EdgeInsets.only(
+                        left: 8.0, right: 8, top: 4, bottom: 4),
                     child: TextFormField(
+                      onChanged: (value) {
+                        addCropCtrl.cropModel.cropName = value;
+                      },
                       decoration: InputDecoration(
                         enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.grey)),
@@ -134,30 +145,39 @@ class _AddCropState extends State<AddCrop> {
                     height: 10,
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left:8.0,right:8,top:4,bottom: 4),
+                    padding: const EdgeInsets.only(
+                        left: 8.0, right: 8, top: 4, bottom: 4),
                     child: TextFormField(
-                        keyboardType: TextInputType.number,
-                        decoration: InputDecoration(
-                            enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.grey)),
-                            border: OutlineInputBorder(),
-                            labelText: "Minimum Support Price",
-                            hintText: "eg : Rs xxx/tonne"),
-                      ),
+                      onChanged: (value) {
+                        addCropCtrl.cropModel.msp = value;
+                      },
+                      keyboardType: TextInputType.number,
+                      decoration: InputDecoration(
+                          enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.grey)),
+                          border: OutlineInputBorder(),
+                          labelText: "Minimum Support Price",
+                          hintText: "eg : Rs xxx/tonne"),
+                    ),
                   ),
                   SizedBox(
                     height: 10,
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left:8.0,right:8,top:4,bottom: 4),
+                    padding: const EdgeInsets.only(
+                        left: 8.0, right: 8, top: 4, bottom: 4),
                     child: TextFormField(
-                        decoration: InputDecoration(
-                            enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.grey)),
-                            border: OutlineInputBorder(),
-                            labelText: "Product Description",
-                            hintText: "Can include the organic status and region"),
-                      ),
+                      onChanged: (value) {
+                        addCropCtrl.cropModel.cropDescription = value;
+                      },
+                      decoration: InputDecoration(
+                          enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.grey)),
+                          border: OutlineInputBorder(),
+                          labelText: "Crop Description",
+                          hintText:
+                              "Can include the organic status and region"),
+                    ),
                   )
                 ],
               ),

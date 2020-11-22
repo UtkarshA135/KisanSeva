@@ -5,13 +5,13 @@ import 'package:page_transition/page_transition.dart';
 import 'addCrop.dart';
 
 // ignore: camel_case_types
-class smartConnect extends StatefulWidget {
+class SmartConnect extends StatefulWidget {
   @override
-  _smartConnectState createState() => _smartConnectState();
+  _SmartConnectState createState() => _SmartConnectState();
 }
 
 // ignore: camel_case_types
-class _smartConnectState extends State<smartConnect> {
+class _SmartConnectState extends State<SmartConnect> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -831,7 +831,8 @@ class _smartConnectState extends State<smartConnect> {
           Navigator.push(
             context,
             PageTransition(
-                type: PageTransitionType.bottomToTop,duration: Duration(milliseconds: 600),
+                type: PageTransitionType.bottomToTop,
+                duration: Duration(milliseconds: 600),
                 alignment: Alignment.bottomCenter,
                 child: AddCrop()),
           );
