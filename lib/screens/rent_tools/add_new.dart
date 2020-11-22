@@ -16,7 +16,8 @@ class AddItem extends StatefulWidget {
 class _AddItemState extends State<AddItem> {
   var imageFile;
   // List<Asset> multiImageList = List<Asset>();
-
+  String dropdownValue = "Tractors";
+  String newValue;
   final logger = Logger();
   final addRentToolsCtrl = Get.put(AddRentToolsCtrl());
   // Future<void> loadAssets() async {
@@ -179,6 +180,33 @@ class _AddItemState extends State<AddItem> {
                 border: OutlineInputBorder(),
                 labelText: "Cost per hour",
                 hintText: "eg : Rs xxx/hr"),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          DropdownButtonFormField<String>(
+            decoration: InputDecoration(
+              enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.grey)),
+              border: OutlineInputBorder(),
+              labelText: "Category",
+            ),
+            value: dropdownValue,
+            icon: Icon(Icons.arrow_drop_down),
+            iconSize: 24,
+            elevation: 16,
+            onChanged: (String newValue) {
+              setState(() {
+                dropdownValue = newValue;
+              });
+            },
+            items: <String>['Tractors', 'Harvestors', 'Pesticides', 'Others']
+                .map<DropdownMenuItem<String>>((String value) {
+              return DropdownMenuItem<String>(
+                value: value,
+                child: Text(value),
+              );
+            }).toList(),
           ),
           SizedBox(
             height: 10,
