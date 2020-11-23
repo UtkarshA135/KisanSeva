@@ -20,8 +20,7 @@ class DescPage extends StatelessWidget {
               ),
               Image(
                 image: NetworkImage(rentToolsModel.toolImage),
-                height: 130,
-                width: 130,
+                height: MediaQuery.of(context).size.height / 1.55,
                 fit: BoxFit.contain,
               ),
               SizedBox(

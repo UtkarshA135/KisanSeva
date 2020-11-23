@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:kisanseva/models/feed_model.dart';
 
 class FeedDetails extends StatelessWidget {
-  final String headline;
-  final String date;
-  final String imgUrl;
+  final FeedModel feedModel;
 
-  const FeedDetails({Key key, this.headline, this.date, this.imgUrl})
-      : super(key: key);
+  const FeedDetails({Key key, this.feedModel}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +32,7 @@ class FeedDetails extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              headline,
+              feedModel.headline,
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
@@ -44,7 +42,7 @@ class FeedDetails extends StatelessWidget {
               height: 5,
             ),
             Text(
-              date,
+              feedModel.date,
               style: TextStyle(
                 color: Colors.grey,
                 fontSize: 14,
@@ -54,7 +52,7 @@ class FeedDetails extends StatelessWidget {
               height: 15,
             ),
             Image.network(
-              imgUrl,
+              feedModel.img,
               width: MediaQuery.of(context).size.width,
               fit: BoxFit.cover,
             ),

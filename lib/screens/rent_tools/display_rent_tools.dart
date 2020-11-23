@@ -71,17 +71,15 @@ class DisplayRentTools extends StatelessWidget {
                       builder: (context) => AuthService().handleAuth()));
             },
           ),
-           IconButton(
+          IconButton(
             icon: Icon(
               Icons.cloud,
               color: Colors.black,
             ),
             onPressed: () async {
-            //  AuthService().signOut();
-              Navigator.push(
-                  context,
-                  new MaterialPageRoute(
-                      builder: (context) => WHomescreen()));
+              //  AuthService().signOut();
+              Navigator.push(context,
+                  new MaterialPageRoute(builder: (context) => WHomescreen()));
             },
           )
         ],
