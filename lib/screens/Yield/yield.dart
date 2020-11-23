@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:kisanseva/models/app_localization.dart';
 import 'package:kisanseva/screens/Yield/result.dart';
 class Yield extends StatefulWidget {
   @override
@@ -48,7 +49,8 @@ async{
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Crop Prediction'),
+        title: Text(  AppLocalizations.of(context)
+                                            .translate ('Crop Prediction'), ),
         centerTitle: true,
       ),
       body: Center(
@@ -58,7 +60,8 @@ async{
             
               children: <Widget>[
                 Center(
-                  child : Text("Lets Predict your crop",
+                  child : Text(AppLocalizations.of(context)
+                                            .translate ("Lets Predict your crop"),
                   style: TextStyle(
                     fontSize: 25
                   )
@@ -86,7 +89,8 @@ async{
       children: <Widget>[
         new TextFormField(
           keyboardType: TextInputType.number,
-          decoration: new InputDecoration(hintText: 'Air Humidity'),
+          decoration: new InputDecoration(hintText: AppLocalizations.of(context)
+                                            .translate ('Air Humidity')),
           maxLength: 32,
           validator: validateName,
           onSaved: (String val) {
@@ -94,7 +98,8 @@ async{
           },
         ),
         new TextFormField(
-            decoration: new InputDecoration(hintText: 'Air Temperature'),
+            decoration: new InputDecoration(hintText: AppLocalizations.of(context)
+                                            .translate ('Air Temperature')),
             keyboardType: TextInputType.number,
             maxLength: 10,
             validator: validateMobile,
@@ -102,7 +107,8 @@ async{
               atemp= double.parse(val);
             }),
         new TextFormField(
-            decoration: new InputDecoration(hintText: 'Rainfall'),
+            decoration: new InputDecoration(hintText: AppLocalizations.of(context)
+                                            .translate ('Rainfall')),
             keyboardType: TextInputType.number,
             maxLength: 32,
             validator: validateEmail,
@@ -111,7 +117,8 @@ async{
             }),
               new TextFormField(
           keyboardType: TextInputType.number,
-          decoration: new InputDecoration(hintText: 'Soil Humidity'),
+          decoration: new InputDecoration(hintText:AppLocalizations.of(context)
+                                            .translate ('Soil Humidity') ),
           maxLength: 32,
           validator: validateName,
           onSaved: (String val) {
@@ -120,7 +127,8 @@ async{
         ),
           new TextFormField(
           keyboardType: TextInputType.number,
-          decoration: new InputDecoration(hintText: 'Soil pH'),
+          decoration: new InputDecoration(hintText: AppLocalizations.of(context)
+                                            .translate ('Soil pH') ),
           maxLength: 15,
           validator: validateName,
           onSaved: (String val) {
@@ -130,7 +138,8 @@ async{
         new SizedBox(height: 15.0),
         new RaisedButton(
           onPressed: _sendToServer,
-          child: new Text('Send'),
+          child: new Text(AppLocalizations.of(context)
+                                            .translate ('Send')),
         )
       ],
     );

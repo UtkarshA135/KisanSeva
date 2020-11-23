@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kisanseva/models/app_localization.dart';
 
 class FeedDetails extends StatelessWidget {
   final String headline;
@@ -11,7 +12,8 @@ class FeedDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Feed"),
+        title: Text((AppLocalizations.of(context)
+                                            .translate ("Feed")),),
         actions: [
           FlatButton(
             color: Colors.green,
@@ -19,7 +21,8 @@ class FeedDetails extends StatelessWidget {
             child: Row(
               children: [
                 Text(
-                  "Bookmarks",
+                  (AppLocalizations.of(context)
+                                            .translate ("Bookmarks")),
                   style: TextStyle(color: Colors.black87),
                 ),
                 Icon(Icons.bookmark)

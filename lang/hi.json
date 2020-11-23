@@ -1,0 +1,33 @@
+{
+
+    "SmartFarm":"स्मार्ट फार्म",
+    "Categories":"श्रेणियाँ",
+    "Tractors":"ट्रैक्टर",
+    "Harvestors":"फसल कटाई मशीन",
+    "Pesticides":"कीटनाशकों",
+    "Others":"अन्य",
+    "Tools": "उपकरण",
+    "Diseases":"रोग",
+    "Yield":"प्राप्ति",
+    "Connect":"जुडिये",
+    "Feed":"फ़ीड",
+    "Bookmarks":"बुकमार्क",
+    "Search...":"खोज...",
+    
+    "Crop Prediction":"फसल की भविष्यवाणी",
+    "Lets Predict your crop":"अपनी फसल की भविष्यवाणी करें",
+    "Air Humidity":"हवा में नमीं",
+    "Air Temperature":"हवा का तापमान",
+    "Rainfall":"वर्षा",
+    "Soil Humidity":"मिट्टी की आर्द्रता",
+    "Soil pH":"मिट्टी का पीएच",
+    "Send":"भेजें",
+    "BID":"बोली",
+    "Phone Number":"फ़ोन नंबर",
+    "Enter OTP":"OTP दर्ज करें",
+    "Enter your phone number":"अपना दूरभाष क्रमांक दर्ज करें",
+    "Continue":"जारी रखें",
+    "Verify":"सत्यापित करें",
+    "Create\nYour\nAccount":"अपना\nखाते\nबनाएँ",
+    "Plant Disease Recognition":"पादप रोग मान्यता"
+}

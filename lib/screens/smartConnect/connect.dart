@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kisanseva/models/app_localization.dart';
 import 'package:kisanseva/screens/smartConnect/BidPage.dart';
 
 import 'productModel.dart';
@@ -254,7 +255,8 @@ product(String s, String t, String imgURL, BuildContext context) {
             );
           },
           child: new Text(
-            'BID',
+           (AppLocalizations.of(context)
+                                            .translate('BID')) ,
             style: new TextStyle(fontSize: 12.0, color: Colors.white),
           ),
         ),

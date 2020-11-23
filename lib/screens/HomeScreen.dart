@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:kisanseva/models/app_localization.dart';
 import 'package:kisanseva/screens/Yield/yield.dart';
 import 'package:kisanseva/screens/diseaseDetection/modalHelper.dart';
 import 'package:kisanseva/screens/feed/feed_page.dart';
@@ -137,31 +138,36 @@ class _HomeScreenState extends State<HomeScreen> {
         icon: Icon(
           Icons.build,
         ),
-        title: ("Tools"),
+        title: ( AppLocalizations.of(context)
+                                            .translate ("Tools") ),
         activeColor: Colors.green,
         inactiveColor: Colors.grey,
       ),
       PersistentBottomNavBarItem(
         icon: Icon(Icons.local_florist),
-        title: ("Disease"),
+        title: (AppLocalizations.of(context)
+                                            .translate ("Diseases")),
         activeColor: Colors.green,
         inactiveColor: Colors.grey,
       ),
       PersistentBottomNavBarItem(
         icon: Icon(Icons.attach_money),
-        title: ("Yield"),
+        title: (AppLocalizations.of(context)
+                                            .translate ("Yield")),
         activeColor: Colors.green,
         inactiveColor: Colors.grey,
       ),
       PersistentBottomNavBarItem(
         icon: Icon(Icons.store),
-        title: ("Connect"),
+        title: (AppLocalizations.of(context)
+                                            .translate ("Connect")),
         activeColor: Colors.green,
         inactiveColor: Colors.grey,
       ),
       PersistentBottomNavBarItem(
         icon: Icon(CupertinoIcons.news_solid),
-        title: ("Feed"),
+        title: (AppLocalizations.of(context)
+                                            .translate ("Feed")),
         activeColor: Colors.green,
         inactiveColor: Colors.grey,
       ),

@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:kisanseva/models/app_localization.dart';
 import 'cure.dart';
 import 'package:tflite/tflite.dart';
 import 'package:image_picker/image_picker.dart';
@@ -176,7 +177,7 @@ class _MyAppState extends State<MyApp> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Plant Disease Recognition'),
+        title: Text ('Plant Disease Recognition'),
       ),
       body: Stack(
         children: stackChildren,

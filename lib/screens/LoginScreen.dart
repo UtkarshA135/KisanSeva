@@ -1,5 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:kisanseva/main.dart';
+import 'package:kisanseva/models/app_localization.dart';
+import 'package:kisanseva/models/language.dart';
 import 'package:kisanseva/screens/HomeScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:kisanseva/services/authservice.dart';
@@ -182,14 +185,15 @@ final CollectionReference userCollection = Firestore.instance.collection('users'
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
                             SizedBox(height: 40),
-                            _labelText('Phone Number'),
+                            _labelText(('Phone Number')),
                             Padding(
                                 padding:
                                     EdgeInsets.only(left: 25.0, right: 25.0),
                                 child: TextFormField(
                                   keyboardType: TextInputType.phone,
                                   decoration: InputDecoration(
-                                    hintText: ' Enter your phone number',
+                                    hintText:     AppLocalizations.of(context)
+                                            .translate ('Enter your phone number')  ,
                                     prefixText: '+91',
                                     prefixIcon: Icon(Icons.phone),
                                     enabledBorder: OutlineInputBorder(
@@ -210,14 +214,15 @@ final CollectionReference userCollection = Firestore.instance.collection('users'
                                         CrossAxisAlignment.start,
                                     children: <Widget>[
                                         SizedBox(height: 40),
-                                        _labelText('Enter OTP'),
+                                        _labelText("Enter OTP"),
                                         Padding(
                                             padding: EdgeInsets.only(
                                                 left: 25.0, right: 25.0),
                                             child: TextFormField(
                                               keyboardType: TextInputType.phone,
                                               decoration: InputDecoration(
-                                                hintText: 'Enter OTP',
+                                                hintText:     AppLocalizations.of(context)
+                                            .translate ('Enter OTP')  ,
                                                 prefixIcon: Icon(Icons.vpn_key),
                                                 enabledBorder:
                                                     OutlineInputBorder(
@@ -252,11 +257,13 @@ final CollectionReference userCollection = Firestore.instance.collection('users'
                                   },
                                   child: codeSent
                                       ? Text(
-                                          'Continue',
+                                            AppLocalizations.of(context)
+                                            .translate ('Continue'), 
                                           style: TextStyle(fontSize: 20),
                                         )
                                       : Text(
-                                          'Verify',
+                                         AppLocalizations.of(context)
+                                            .translate ('Verify')  , 
                                           style: TextStyle(fontSize: 20),
                                         ),
                                   color: Color(0XFF303f9f),
@@ -268,6 +275,23 @@ final CollectionReference userCollection = Firestore.instance.collection('users'
                               ),
                             ),
                             SizedBox(height: 12),
+                                         Align(
+                    alignment: Alignment(0.9, -0.9),
+                    child: DropdownButton(
+                      underline: SizedBox(),
+                      icon: Icon(Icons.language),
+                      iconSize: 40,
+                      items: Language.languageList()
+                          .map<DropdownMenuItem>((lang) => DropdownMenuItem(
+                                child: Text(lang.name),
+                                value: lang,
+                              ))
+                          .toList(),
+                      onChanged: (language) {
+                        _changeLanguage(language);
+                      },
+                    ),
+                  ),
                             SizedBox(height: 18),
                           ]))))
             ]))));
@@ -368,7 +392,8 @@ async{
     return Padding(
       padding: EdgeInsets.only(left: 24),
       child: Text(
-        title,
+         AppLocalizations.of(context)
+                                            .translate(title),
         style: TextStyle(
           fontWeight: FontWeight.w500,
           color: Colors.black,
@@ -377,16 +402,29 @@ async{
       ),
     );
   }
+void _changeLanguage(Language language) {
+    Locale _temp;
+    switch (language.languageCode) {
+      case 'en':
+        _temp = Locale(language.languageCode, 'US');
+        break;
+      case 'hi':
+        _temp = Locale(language.languageCode, 'IN');
+        break;
+    }
+    MyApp.setLocale(context, _temp);
+  }
 
   _topheader() {
     return Padding(
-      padding: EdgeInsets.only(left: 32),
+      padding: EdgeInsets.all( 32),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Text(
-            'Create\nYour\nAccount',
+            AppLocalizations.of(context)
+                                            .translate('Create\nYour\nAccount'),
             style: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.w600,
