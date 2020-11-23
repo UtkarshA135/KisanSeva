@@ -7,6 +7,10 @@ import 'package:kisanseva/screens/smartConnect/addCrop.dart';
 import 'package:kisanseva/screens/smartConnect/crop_template.dart';
 import 'package:kisanseva/models/app_localization.dart';
 import 'package:kisanseva/screens/smartConnect/BidPage.dart';
+import 'package:get/get.dart';
+import 'package:kisanseva/models/crop_model.dart';
+import 'package:kisanseva/screens/smartConnect/addCrop.dart';
+import 'package:kisanseva/screens/smartConnect/crop_template.dart';
 
 import 'BidPage.dart';
 
@@ -98,7 +102,7 @@ class _connectState extends State<connect> {
                 itemBuilder: (context, index) {
                   DocumentSnapshot crop = snapshot.data.documents[index];
                   CropModel cropModel = CropModel.fromJson(crop.data);
-                  return cropTemplate(cropModel: cropModel);
+                  return CropTemplate(cropModel: cropModel);
                 },
               );
             } else if (snapshot.hasError) {

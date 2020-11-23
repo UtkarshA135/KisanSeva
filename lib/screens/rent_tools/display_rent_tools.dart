@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:kisanseva/main.dart';
 import 'package:kisanseva/models/app_localization.dart';
 import 'package:kisanseva/models/language.dart';
+import 'package:get/get.dart';
 import 'package:kisanseva/models/rent_tools_model.dart';
 import 'package:kisanseva/screens/rent_tools/display_rent_tools_ctrl.dart';
 import 'package:kisanseva/screens/rent_tools/rent_tools_template.dart';

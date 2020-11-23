@@ -5,6 +5,8 @@ import 'package:kisanseva/screens/feed/feed_details.dart';
 import 'package:kisanseva/screens/feed/feed_template.dart';
 import 'package:kisanseva/screens/weather/screens/homeScreen.dart';
 
+import 'package:url_launcher/url_launcher.dart';
+
 class Feed extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -125,6 +127,12 @@ class Feed extends StatelessWidget {
             )
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.call),
+        onPressed: () async {
+          await launch('tel:18001801551');
+        },
       ),
     );
   }

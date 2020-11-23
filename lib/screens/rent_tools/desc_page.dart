@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:kisanseva/models/rent_tools_model.dart';
-
+import 'package:url_launcher/url_launcher.dart';
 class DescPage extends StatelessWidget {
   final RentToolsModel rentToolsModel;
 
   const DescPage({Key key, this.rentToolsModel}) : super(key: key);
+  call(String x) async {
+  await launch('tel:$x');
+}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,7 +52,11 @@ class DescPage extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     RaisedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        call(
+           rentToolsModel.ownerContactInfo
+                        );
+                      },
                       shape: StadiumBorder(),
                       child: Center(
                         child: Row(
