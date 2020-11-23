@@ -1,24 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:kisanseva/screens/smartConnect/display_crop_ctrl.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-class bidPage extends StatefulWidget {
-  final String imgUrl, MSP, desc;
+class BidPage extends StatefulWidget {
+  final String imgUrl, MSP, desc, cropName;
 
-  const bidPage(this.imgUrl, this.MSP, this.desc);
+  const BidPage(this.imgUrl, this.MSP, this.desc, this.cropName);
 
   @override
-  _bidPageState createState() => _bidPageState();
+  _BidPageState createState() => _BidPageState();
 }
 
 // ignore: camel_case_types
-class _bidPageState extends State<bidPage> {
+class _BidPageState extends State<BidPage> {
+  final displayCropController = Get.find<DisplayCropCtrl>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: AppBar(),
-      body: Container(
-        decoration:
-            BoxDecoration(border: Border.all(color: Colors.green, width: 5)),
+      body: SingleChildScrollView(
         child: Column(
           children: [
             Padding(
@@ -45,14 +47,14 @@ class _bidPageState extends State<bidPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Text(
-                      widget.MSP,
+                      "Selling Price: ${widget.MSP}",
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [Icon(Icons.timer), Text("1H 21m")],
-                    )
+                    // Row(
+                    //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    //   children: [Icon(Icons.timer), Text("1H 21m")],
+                    // )
                   ],
                 ),
               ),
@@ -60,51 +62,64 @@ class _bidPageState extends State<bidPage> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
               child: Text(
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Id cursus metus aliquam eleifend mi. Nullam non nisi est sit amet facilisis magna etiam. Adipiscing vitae proin sagittis nisl rhoncus mattis. Congue nisi vitae suscipit tellus mauris a. Tristique magna sit amet purus gravida quis blandit turpis cursus. Consectetur adipiscing elit ut aliquam purus. Rutrum quisque non tellus orci ac auctor augue mauris. Est lorem ipsum dolor sit amet. Tincidunt eget nullam non nisi. Porttitor massa id neque aliquam vestibulum morbi. In arcu cursus euismod quis viverra nibh. Sit amet mattis vulputate enim nulla."),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Container(
-                height: 60,
-                width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.black, width: 1),
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 10, right: 80.0),
-                          child: Text(
-                            "Rs.30000/tonne",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 18),
-                          ),
-                        ),
-                        Text("42",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 18))
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 25, right: 85.0),
-                          child: Text("Latest Bid",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w500, fontSize: 14)),
-                        ),
-                        Text("Current Bids",
-                            style: TextStyle(
-                                fontWeight: FontWeight.w500, fontSize: 14))
-                      ],
-                    ),
-                  ],
-                ),
+                "Crop name ",
               ),
             ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10.0),
+              child: Text(
+                "Quantity ",
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10.0),
+              child: Text(
+                "Description",
+              ),
+            ),
+            // Padding(
+            //   padding: const EdgeInsets.all(10.0),
+            //   child: Container(
+            //     height: 60,
+            //     width: MediaQuery.of(context).size.width,
+            //     decoration: BoxDecoration(
+            //       border: Border.all(color: Colors.black, width: 1),
+            //     ),
+            //     child: Column(
+            //       mainAxisAlignment: MainAxisAlignment.center,
+            //       children: [
+            //         Row(
+            //           children: [
+            //             Padding(
+            //               padding: const EdgeInsets.only(left: 10, right: 80.0),
+            //               child: Text(
+            //                 "Rs.30000/tonne",
+            //                 style: TextStyle(
+            //                     fontWeight: FontWeight.bold, fontSize: 18),
+            //               ),
+            //             ),
+            //             Text("42",
+            //                 style: TextStyle(
+            //                     fontWeight: FontWeight.bold, fontSize: 18))
+            //           ],
+            //         ),
+            //         Row(
+            //           children: [
+            //             Padding(
+            //               padding: const EdgeInsets.only(left: 25, right: 85.0),
+            //               child: Text("Latest Bid",
+            //                   style: TextStyle(
+            //                       fontWeight: FontWeight.w500, fontSize: 14)),
+            //             ),
+            //             Text("Current Bids",
+            //                 style: TextStyle(
+            //                     fontWeight: FontWeight.w500, fontSize: 14))
+            //           ],
+            //         ),
+            //       ],
+            //     ),
+            //   ),
+            // ),
             SizedBox(
               height: 10,
             ),
@@ -121,21 +136,30 @@ class _bidPageState extends State<bidPage> {
             SizedBox(
               height: 10,
             ),
-            RaisedButton(
-              onPressed: () {},
-              elevation: 4,
-              color: Colors.green[400],
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Icon(Icons.phone),
-                  Text("Contact Owner"),
-                ],
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: RaisedButton(
+                onPressed: () {
+                  call(displayCropController.cropModel.ownerContactInfo);
+                },
+                elevation: 4,
+                color: Colors.green[400],
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(Icons.phone),
+                    Text("Contact Owner"),
+                  ],
+                ),
               ),
             )
           ],
         ),
       ),
     );
+  }
+
+  call(String x) async {
+    await launch('tel:$x');
   }
 }

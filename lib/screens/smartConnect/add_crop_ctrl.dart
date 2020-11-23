@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -12,6 +13,7 @@ class AddCropCtrl extends GetxController {
   CropModel cropModel = CropModel();
   String picDownloadUrl = '';
   var logger = Logger(printer: PrettyPrinter());
+  String contact;
   // Firestore firestore = FirebaseFirestore.instance;
 
   Future<dynamic> postImage(File imageFile) async {
@@ -36,6 +38,26 @@ class AddCropCtrl extends GetxController {
     return storageTaskSnapshot.ref.getDownloadURL();
   }
 
+  getCurrentUser() async {
+    await FirebaseAuth?.instance?.currentUser()?.then((value) {
+      contact = value?.phoneNumber;
+      cropModel.ownerContactInfo = (contact);
+    });
+  }
+
+  // getOwnerInfoFromFirestore() async {
+  //   //return Firestore.instance.collection('users').document(firebaseUser.uid);
+
+  //   await Firestore.instance
+  //       .collection('users')
+  //       .document(firebaseUser.uid)
+  //       .snapshots()
+  //       .forEach((element) {
+  //     contact = element.data["phno"];
+  //   });
+  //   // =int.parse(contact);
+  // }
+
   addCrop(imageFile) async {
     Get.dialog(
       Material(
@@ -56,6 +78,8 @@ class AddCropCtrl extends GetxController {
     await postImage(imageFile).then((value) => cropModel.cropImage = value);
     logger.d("CropImage url=${cropModel.cropImage}");
     logger.d("inside addCrop ${cropModel?.toJson()}");
+    await getCurrentUser();
+
     await Firestore.instance
         .collection("crop")
         .document()
