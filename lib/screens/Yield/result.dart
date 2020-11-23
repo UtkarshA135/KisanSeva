@@ -29,7 +29,8 @@ class _ResultState extends State<Result> {
     
        child: Card(
          child: Column(children: [
-          crop!=null ?Text("Predicted Crop : $crop"): Text("Loading.....")
+          crop!=null ?Center(child :Text("Predicted Crop : $crop")): Center(child :Text("Loading.....")),
+          crop!=null? Image(image : AssetImage("assets/mango.jpg")):Container()
          ],),
       ),),
     ));
