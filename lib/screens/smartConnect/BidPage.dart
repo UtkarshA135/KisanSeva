@@ -14,7 +14,7 @@ class _bidPageState extends State<bidPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        resizeToAvoidBottomInset: false,
+        resizeToAvoidBottomInset: true,
         appBar: AppBar(),
         body: Container(
           decoration: BoxDecoration(
@@ -103,9 +103,7 @@ class _bidPageState extends State<bidPage> {
                   ],
                 ),
               ),
-              SizedBox(
-                height: 10,
-              ),
+              
               Container(
                 width: MediaQuery.of(context).size.width * 0.8,
                 child: TextField(

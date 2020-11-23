@@ -81,39 +81,39 @@ class _HomescreenState extends State<WHomescreen> {
                         ? Weather(weather: weatherData)
                         : Container(),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: isLoading
-                        ? CircularProgressIndicator(
-                            strokeWidth: 2.0,
-                            valueColor:
-                                new AlwaysStoppedAnimation(Colors.white),
-                          )
-                        : IconButton(
-                            icon: new Icon(Icons.refresh),
-                            tooltip: 'Refresh',
-                            onPressed: loadWeather,
-                            color: Colors.white,
-                          ),
-                  ),
+                  // Padding(
+                  //   padding: const EdgeInsets.all(8.0),
+                  //   child: isLoading
+                  //       ? CircularProgressIndicator(
+                  //           strokeWidth: 2.0,
+                  //           valueColor:
+                  //               new AlwaysStoppedAnimation(Colors.white),
+                  //         )
+                  //       : IconButton(
+                  //           icon: new Icon(Icons.refresh),
+                  //           tooltip: 'Refresh',
+                  //           onPressed: loadWeather,
+                  //           color: Colors.white,
+                  //         ),
+                  // ),
                 ],
               ),
             ),
-            SafeArea(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  height: 200.0,
-                  child: forecastData != null
-                      ? ListView.builder(
-                          itemCount: forecastData.list.length,
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) => WeatherItem(
-                              weather: forecastData.list.elementAt(index)))
-                      : Container(),
-                ),
-              ),
-            ),
+            // SafeArea(
+            //   child: Padding(
+            //     padding: const EdgeInsets.all(8.0),
+            //     child: Container(
+            //       height: 200.0,
+            //       child: forecastData != null
+            //           ? ListView.builder(
+            //               itemCount: forecastData.list.length,
+            //               scrollDirection: Axis.horizontal,
+            //               itemBuilder: (context, index) => WeatherItem(
+            //                   weather: forecastData.list.elementAt(index)))
+            //           : Container(),
+            //     ),
+            //   ),
+            // ),
           ],
         ),
       ),

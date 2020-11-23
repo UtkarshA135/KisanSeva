@@ -9,6 +9,7 @@ class CropModel {
     this.allBid,
     this.higestBid,
     this.ownerContactInfo,
+    this.cropQuantity,
   });
 
   String cropImage;
@@ -18,6 +19,7 @@ class CropModel {
   List<dynamic> allBid;
   String higestBid;
   int ownerContactInfo;
+  String cropQuantity;
 
   factory CropModel.fromRawJson(String str) =>
       CropModel.fromJson(json.decode(str));
@@ -25,14 +27,14 @@ class CropModel {
   String toRawJson() => json.encode(toJson());
 
   factory CropModel.fromJson(Map<String, dynamic> json) => CropModel(
-        cropImage: json["cropImage"],
-        cropName: json["cropName"],
-        cropDescription: json["cropDescription"],
-        msp: json["msp"],
-        // allBid: List<dynamic>.from(json["allBid"].map((x) => x)),
-        higestBid: json["HigestBid"],
-        ownerContactInfo: json["ownerContactInfo"],
-      );
+      cropImage: json["cropImage"],
+      cropName: json["cropName"],
+      cropDescription: json["cropDescription"],
+      msp: json["msp"],
+      // allBid: List<dynamic>.from(json["allBid"].map((x) => x)),
+      higestBid: json["HigestBid"],
+      ownerContactInfo: json["ownerContactInfo"],
+      cropQuantity: json['cropQuantity']);
 
   Map<String, dynamic> toJson() => {
         "cropImage": cropImage,
@@ -40,6 +42,7 @@ class CropModel {
         "cropDescription": cropDescription,
         "msp": msp,
         // "allBid": List<dynamic>.from(allBid.map((x) => x)),
+        "cropQuantity": cropQuantity,
         "HigestBid": higestBid,
         "ownerContactInfo": ownerContactInfo,
       };
