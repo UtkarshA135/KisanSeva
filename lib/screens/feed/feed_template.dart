@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kisanseva/models/feed_model.dart';
 import 'package:kisanseva/screens/feed/feed_details.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class FeedTemplate extends StatelessWidget {
   final FeedModel feedModel;
@@ -12,11 +13,7 @@ class FeedTemplate extends StatelessWidget {
       padding: const EdgeInsets.all(10.0),
       child: GestureDetector(
         onTap: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => FeedDetails(feedModel: feedModel),
-            ),
-          );
+          _launchURL(feedModel.url);
         },
         child: Stack(
           children: [
@@ -76,5 +73,13 @@ class FeedTemplate extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+_launchURL(String url) async {
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
   }
 }
