@@ -10,12 +10,14 @@ import 'package:kisanseva/screens/rent_tools/display_rent_tools_ctrl.dart';
 import 'package:kisanseva/screens/rent_tools/rent_tools_template.dart';
 import 'package:kisanseva/screens/weather/screens/homeScreen.dart';
 import 'package:kisanseva/services/authservice.dart';
+import 'package:logger/logger.dart';
 
 import 'add_new.dart';
 import 'desc_page.dart';
 
 class DisplayRentTools extends StatelessWidget {
   final displayRentToolsCtrl = Get.put(DisplayRentToolsCtrl());
+  final logger = Logger();
 
   @override
   Widget build(BuildContext context) {
@@ -168,8 +170,17 @@ class DisplayRentTools extends StatelessWidget {
                         color: Colors.yellow,
                       ),
                       child: Center(
-                        child: Text(
-                            AppLocalizations.of(context).translate("Tractors")),
+                        child: TextButton(
+                          onPressed: () {
+                            displayRentToolsCtrl.selectedCategory.value = "All";
+                            // displayRentToolsCtrl.rentToolsStrems();
+                            logger.d(
+                                "displayRentToolsCtrl.selectedCategory.value is ${displayRentToolsCtrl.selectedCategory.value} ");
+                          },
+                          child: Text(
+                            AppLocalizations.of(context).translate("All"),
+                          ),
+                        ),
                       ),
                     ),
                     SizedBox(
@@ -182,8 +193,18 @@ class DisplayRentTools extends StatelessWidget {
                         color: Colors.yellow,
                       ),
                       child: Center(
-                        child: Text(AppLocalizations.of(context)
-                            .translate("Harvestors")),
+                        child: TextButton(
+                          onPressed: () {
+                            displayRentToolsCtrl.selectedCategory.value =
+                                "Tractors";
+                            // displayRentToolsCtrl.rentToolsStrems();
+                            logger.d(
+                                "displayRentToolsCtrl.selectedCategory.value is ${displayRentToolsCtrl.selectedCategory.value} ");
+                          },
+                          child: Text(
+                            AppLocalizations.of(context).translate("Tractors"),
+                          ),
+                        ),
                       ),
                     ),
                     SizedBox(
@@ -196,8 +217,19 @@ class DisplayRentTools extends StatelessWidget {
                         color: Colors.yellow,
                       ),
                       child: Center(
-                        child: Text(AppLocalizations.of(context)
-                            .translate("Pesticides")),
+                        child: TextButton(
+                          onPressed: () {
+                            displayRentToolsCtrl.selectedCategory.value =
+                                "Harvestors";
+                            // displayRentToolsCtrl.rentToolsStrems();
+                            logger.d(
+                                "displayRentToolsCtrl.selectedCategory.value is ${displayRentToolsCtrl.selectedCategory.value} ");
+                          },
+                          child: Text(
+                            AppLocalizations.of(context)
+                                .translate("Harvestors"),
+                          ),
+                        ),
                       ),
                     ),
                     SizedBox(
@@ -210,8 +242,43 @@ class DisplayRentTools extends StatelessWidget {
                         color: Colors.yellow,
                       ),
                       child: Center(
-                        child: Text(
-                            AppLocalizations.of(context).translate("Others")),
+                        child: TextButton(
+                          onPressed: () {
+                            displayRentToolsCtrl.selectedCategory.value =
+                                "Pesticides";
+                            // displayRentToolsCtrl.rentToolsStrems();
+                            logger.d(
+                                "displayRentToolsCtrl.selectedCategory.value is ${displayRentToolsCtrl.selectedCategory.value} ");
+                          },
+                          child: Text(
+                            AppLocalizations.of(context)
+                                .translate("Pesticides"),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Container(
+                      width: 75,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        color: Colors.yellow,
+                      ),
+                      child: Center(
+                        child: TextButton(
+                          onPressed: () {
+                            displayRentToolsCtrl.selectedCategory.value =
+                                "Others";
+                            // displayRentToolsCtrl.rentToolsStrems();
+                            logger.d(
+                                "displayRentToolsCtrl.selectedCategory.value is ${displayRentToolsCtrl.selectedCategory.value} ");
+                          },
+                          child: Text(
+                            AppLocalizations.of(context).translate("Others"),
+                          ),
+                        ),
                       ),
                     ),
                   ],
@@ -220,33 +287,36 @@ class DisplayRentTools extends StatelessWidget {
               SizedBox(
                 height: 20,
               ),
-              StreamBuilder<dynamic>(
-                stream: Firestore.instance.collection('rentTools').snapshots(),
-                // stream: displayRentToolsCtrl.rentToolsStrems(),
-                builder: (context, snapshot) {
-                  if (snapshot.hasData) {
-                    //do something with the data
-                    return ListView.builder(
-                      physics: NeverScrollableScrollPhysics(),
-                      itemCount: snapshot.data.documents.length,
-                      shrinkWrap: true,
-                      itemBuilder: (context, index) {
-                        DocumentSnapshot rentTools =
-                            snapshot.data.documents[index];
-                        RentToolsModel rentToolsModel =
-                            RentToolsModel.fromJson(rentTools.data);
-                        return RentToolsTemplate(
-                            rentToolsModel: rentToolsModel);
-                      },
-                    );
-                  } else if (snapshot.hasError) {
-                    //do something with the error
-                    return Text(snapshot.error.toString());
-                  }
-                  //the data is not ready, show a loading indicator
-                  return Center(child: CircularProgressIndicator());
-                },
-              )
+              Obx(() {
+                displayRentToolsCtrl.selectedCategory.value;
+                return StreamBuilder<dynamic>(
+                  // stream: Firestore.instance.collection('rentTools').snapshots(),
+                  stream: displayRentToolsCtrl.rentToolsStrems(),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      //do something with the data
+                      return ListView.builder(
+                        physics: NeverScrollableScrollPhysics(),
+                        itemCount: snapshot.data.documents.length,
+                        shrinkWrap: true,
+                        itemBuilder: (context, index) {
+                          DocumentSnapshot rentTools =
+                              snapshot.data.documents[index];
+                          RentToolsModel rentToolsModel =
+                              RentToolsModel.fromJson(rentTools.data);
+                          return RentToolsTemplate(
+                              rentToolsModel: rentToolsModel);
+                        },
+                      );
+                    } else if (snapshot.hasError) {
+                      //do something with the error
+                      return Text(snapshot.error.toString());
+                    }
+                    //the data is not ready, show a loading indicator
+                    return Center(child: CircularProgressIndicator());
+                  },
+                );
+              })
 
               // GridView.builder(
               //   physics: NeverScrollableScrollPhysics(),
