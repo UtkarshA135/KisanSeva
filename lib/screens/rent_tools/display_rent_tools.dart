@@ -2,6 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kisanseva/main.dart';
+import 'package:kisanseva/models/app_localization.dart';
+import 'package:kisanseva/models/language.dart';
 import 'package:kisanseva/models/rent_tools_model.dart';
 import 'package:kisanseva/screens/rent_tools/display_rent_tools_ctrl.dart';
 import 'package:kisanseva/screens/rent_tools/rent_tools_template.dart';
@@ -13,8 +16,21 @@ import 'desc_page.dart';
 
 class DisplayRentTools extends StatelessWidget {
   final displayRentToolsCtrl = Get.put(DisplayRentToolsCtrl());
+
   @override
   Widget build(BuildContext context) {
+      void _changeLanguage(Language language) {
+    Locale _temp;
+    switch (language.languageCode) {
+      case 'en':
+        _temp = Locale(language.languageCode, 'US');
+        break;
+      case 'hi':
+        _temp = Locale(language.languageCode, 'IN');
+        break;
+    }
+    MyApp.setLocale(context, _temp);
+  }
     List<Widget> items = [];
     //   card("Harvestor", "hdva wfdhgfwgd", "300",
     //       "https://tiimg.tistatic.com/fp/1/833/harvestor-864.jpg", context),
@@ -49,9 +65,28 @@ class DisplayRentTools extends StatelessWidget {
     // ];
 
     return Scaffold(
-      drawer: Drawer(),
+      drawer: Drawer(
+          child:Align(
+                    alignment: Alignment(0.9, -0.9),
+                    child: DropdownButton(
+                      underline: SizedBox(),
+                      icon: Icon(Icons.language),
+                      iconSize: 40,
+                      items: Language.languageList()
+                          .map<DropdownMenuItem>((lang) => DropdownMenuItem(
+                                child: Text(lang.name),
+                                value: lang,
+                              ))
+                          .toList(),
+                      onChanged: (language) {
+                        _changeLanguage(language);
+                      },
+                    ),
+                  )
+      ),
       appBar: AppBar(
-        title: Text("SmartFarm"),
+        title: Text((AppLocalizations.of(context)
+                                            .translate ("SmartFarm"))),
         actions: [
           IconButton(
             icon: Icon(Icons.notifications),
@@ -81,7 +116,8 @@ class DisplayRentTools extends StatelessWidget {
               Navigator.push(context,
                   new MaterialPageRoute(builder: (context) => WHomescreen()));
             },
-          )
+          ),
+         
         ],
       ),
       body: Container(
@@ -108,13 +144,15 @@ class DisplayRentTools extends StatelessWidget {
                   child: TextFormField(
                     decoration: InputDecoration(
                         icon: Icon(Icons.search),
-                        hintText: "Search...",
+                        hintText: AppLocalizations.of(context)
+                                            .translate ("Search..."),
                         border: InputBorder.none),
                   ),
                 ),
               ),
               Text(
-                "Categories",
+               AppLocalizations.of(context)
+                                            .translate ("Categories") ,
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
               ),
               SizedBox(
@@ -133,7 +171,8 @@ class DisplayRentTools extends StatelessWidget {
                         color: Colors.yellow,
                       ),
                       child: Center(
-                        child: Text("Tractors"),
+                        child: Text(  AppLocalizations.of(context)
+                                            .translate ("Tractors") ),
                       ),
                     ),
                     SizedBox(
@@ -146,7 +185,8 @@ class DisplayRentTools extends StatelessWidget {
                         color: Colors.yellow,
                       ),
                       child: Center(
-                        child: Text("Harvestors"),
+                        child: Text(AppLocalizations.of(context)
+                                            .translate ("Harvestors") ),
                       ),
                     ),
                     SizedBox(
@@ -159,7 +199,8 @@ class DisplayRentTools extends StatelessWidget {
                         color: Colors.yellow,
                       ),
                       child: Center(
-                        child: Text("Pesticides"),
+                        child: Text(AppLocalizations.of(context)
+                                            .translate ("Pesticides")),
                       ),
                     ),
                     SizedBox(
@@ -172,7 +213,8 @@ class DisplayRentTools extends StatelessWidget {
                         color: Colors.yellow,
                       ),
                       child: Center(
-                        child: Text("Others"),
+                        child: Text(AppLocalizations.of(context)
+                                            .translate ("Others")),
                       ),
                     ),
                   ],
