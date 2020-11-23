@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:kisanseva/models/feed_model.dart';
 import 'package:kisanseva/screens/feed/feed_details.dart';
 import 'package:kisanseva/screens/feed/feed_template.dart';
+import 'package:kisanseva/screens/weather/screens/homeScreen.dart';
 
 class Feed extends StatelessWidget {
   @override
@@ -33,17 +34,32 @@ class Feed extends StatelessWidget {
       appBar: AppBar(
         title: Text("Feed"),
         actions: [
-          FlatButton(
-            color: Colors.green,
-            onPressed: () {},
-            child: Row(
-              children: [
-                Text(
-                  "Bookmarks",
-                  style: TextStyle(color: Colors.black87),
-                ),
-                Icon(Icons.bookmark)
-              ],
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: RaisedButton(
+              elevation: 4.0,
+              color: Colors.grey,
+              onPressed: () {
+                Navigator.push(context,
+                    new MaterialPageRoute(builder: (context) => WHomescreen()));
+              },
+              child: Row(
+                children: [
+                  Text(
+                    "Weather",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  IconButton(
+                    icon: Icon(
+                      Icons.cloud,
+                      color: Colors.white,
+                    ),
+                    onPressed: () async {
+                      //  AuthService().signOut();
+                    },
+                  ),
+                ],
+              ),
             ),
           ),
         ],
