@@ -107,7 +107,7 @@ class cropTemplate extends StatelessWidget {
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(3.0),
-                        child: Text("Quantity"),
+                        child: Text("Quantity ${cropModel.cropQuantity}"),
                       ),
                     )
                   ],

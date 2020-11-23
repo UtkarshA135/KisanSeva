@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kisanseva/models/crop_model.dart';
 import 'package:kisanseva/screens/smartConnect/smartConnect.dart';
@@ -36,6 +37,22 @@ class AddCropCtrl extends GetxController {
   }
 
   addCrop(imageFile) async {
+    Get.dialog(
+      Material(
+        child: Padding(
+          padding: const EdgeInsets.only(top: 300.0),
+          child: Center(
+            child: Column(
+              // height: 500,
+              children: [
+                Center(child: Text("Uploading... Please wait")),
+                CircularProgressIndicator(),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
     await postImage(imageFile).then((value) => cropModel.cropImage = value);
     logger.d("CropImage url=${cropModel.cropImage}");
     logger.d("inside addCrop ${cropModel?.toJson()}");
@@ -47,6 +64,6 @@ class AddCropCtrl extends GetxController {
     //   collectionName: 'examsResources',
     //   data: _examModel.toJson(),
     // );
-    
+    Get.back();
   }
 }
