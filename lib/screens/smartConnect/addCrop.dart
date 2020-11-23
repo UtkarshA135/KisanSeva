@@ -32,6 +32,7 @@ class _AddCropState extends State<AddCrop> {
       return Column(
         children: <Widget>[
           Container(
+            clipBehavior: Clip.antiAliasWithSaveLayer,
             decoration: BoxDecoration(
                 border: Border.all(
                   color: Colors.black,

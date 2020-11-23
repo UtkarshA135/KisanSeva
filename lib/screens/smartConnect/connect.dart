@@ -92,7 +92,7 @@ class _connectState extends State<connect> {
             if (snapshot.hasData) {
               //do something with the data
               return ListView.builder(
-                physics: NeverScrollableScrollPhysics(),
+                // physics: NeverScrollableScrollPhysics(),
                 itemCount: snapshot.data.documents.length,
                 shrinkWrap: true,
                 itemBuilder: (context, index) {

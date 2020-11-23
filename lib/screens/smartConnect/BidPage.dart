@@ -14,56 +14,57 @@ class _bidPageState extends State<bidPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        resizeToAvoidBottomInset: true,
-        appBar: AppBar(),
-        body: Container(
-          decoration: BoxDecoration(
-            border: Border.all(
-              color: Colors.green,
-              width: 5
-            )
-          ),
-          child: Column(
-            children: [
-              Container(
-                  height: 150,
+      resizeToAvoidBottomInset: true,
+      appBar: AppBar(),
+      body: Container(
+        decoration:
+            BoxDecoration(border: Border.all(color: Colors.green, width: 5)),
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Container(
+                  height: 200,
                   width: 200,
                   child: Image.network(
                     widget.imgUrl,
                     fit: BoxFit.fill,
                   )),
-              Padding(
-                padding: const EdgeInsets.only(left: 4.0, right: 4),
-                child: Container(
-                  height: 40,
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.black,
-                      width: 1.2,
-                    ),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Text(
-                        widget.MSP,
-                        style:
-                            TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [Icon(Icons.timer), Text("1H 21m")],
-                      )
-                    ],
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10),
+              child: Container(
+                height: 40,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Colors.black,
+                    width: 1.2,
                   ),
                 ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Text(
+                      widget.MSP,
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [Icon(Icons.timer), Text("1H 21m")],
+                    )
+                  ],
+                ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(4.0),
-                child: Text(
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Id cursus metus aliquam eleifend mi. Nullam non nisi est sit amet facilisis magna etiam. Adipiscing vitae proin sagittis nisl rhoncus mattis. Congue nisi vitae suscipit tellus mauris a. Tristique magna sit amet purus gravida quis blandit turpis cursus. Consectetur adipiscing elit ut aliquam purus. Rutrum quisque non tellus orci ac auctor augue mauris. Est lorem ipsum dolor sit amet. Tincidunt eget nullam non nisi. Porttitor massa id neque aliquam vestibulum morbi. In arcu cursus euismod quis viverra nibh. Sit amet mattis vulputate enim nulla."),
-              ),
-              Container(
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10.0),
+              child: Text(
+                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Id cursus metus aliquam eleifend mi. Nullam non nisi est sit amet facilisis magna etiam. Adipiscing vitae proin sagittis nisl rhoncus mattis. Congue nisi vitae suscipit tellus mauris a. Tristique magna sit amet purus gravida quis blandit turpis cursus. Consectetur adipiscing elit ut aliquam purus. Rutrum quisque non tellus orci ac auctor augue mauris. Est lorem ipsum dolor sit amet. Tincidunt eget nullam non nisi. Porttitor massa id neque aliquam vestibulum morbi. In arcu cursus euismod quis viverra nibh. Sit amet mattis vulputate enim nulla."),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Container(
                 height: 60,
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
@@ -103,25 +104,38 @@ class _bidPageState extends State<bidPage> {
                   ],
                 ),
               ),
-              
-              Container(
-                width: MediaQuery.of(context).size.width * 0.8,
-                child: TextField(
-                  keyboardType: TextInputType.number,
-                  decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10)),
-                      hintText: 'Enter Your BID!'),
-                ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            // Container(
+            //   width: MediaQuery.of(context).size.width * 0.8,
+            //   child: TextField(
+            //     keyboardType: TextInputType.number,
+            //     decoration: InputDecoration(
+            //         border: OutlineInputBorder(
+            //             borderRadius: BorderRadius.circular(10)),
+            //         hintText: 'Enter Your BID!'),
+            //   ),
+            // ),
+            SizedBox(
+              height: 10,
+            ),
+            RaisedButton(
+              onPressed: () {},
+              elevation: 4,
+              color: Colors.green[400],
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(Icons.phone),
+                  Text("Contact Owner"),
+                ],
               ),
-              RaisedButton(
-                onPressed: () {},
-                elevation: 4,
-                color: Colors.green[400],
-                child: Text("Place Your Bid!"),
-              )
-            ],
-          ),
-        ));
+            )
+          ],
+        ),
+      ),
+    );
   }
 }

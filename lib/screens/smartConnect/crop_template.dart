@@ -10,127 +10,121 @@ class cropTemplate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-          border: Border.all(color: Colors.green, width: 3),
-          borderRadius: BorderRadius.all(Radius.circular(20))),
+    return Padding(
+      padding: const EdgeInsets.all(10.0),
       child: Container(
-        height: 200,
-        width: 150,
         decoration: BoxDecoration(
-            border: Border.all(
-              color: Colors.white,
-              width: 5,
-            ),
+            border: Border.all(color: Colors.green, width: 3),
             borderRadius: BorderRadius.all(Radius.circular(20))),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(top: 5, bottom: 5),
-                  child: Container(
-                      width: 70,
-                      child: Image.network(
-                        cropModel.cropImage,
-                        fit: BoxFit.scaleDown,
-                        width: 400,
-                        height: 180,
-                      )),
-                ),
-              ],
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 20.0),
-                  child: Container(
-                    height: 50,
-                    width: 120,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(cropModel.cropDescription),
+        child: Container(
+          height: 200,
+          width: 150,
+          decoration: BoxDecoration(
+              border: Border.all(
+                color: Colors.white,
+                width: 5,
+              ),
+              borderRadius: BorderRadius.all(Radius.circular(20))),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Column(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.all(5),
+                    child: Container(
+                      // width: 70,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(15),
+                        child: Image.network(
+                          cropModel.cropImage,
+                          fit: BoxFit.cover,
+                          width: 180,
+                          height: 180,
+                        ),
+                      ),
                     ),
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Colors.blue,
-                          width: 2,
-                        ),
-                        borderRadius: BorderRadius.all(Radius.circular(10))),
                   ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 20.0),
-                      child: Container(
-                        width: 50,
-                        height: 50,
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: Colors.blue,
-                            width: 2,
-                          ),
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                        ),
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Padding(
-                            padding: const EdgeInsets.all(3.0),
-                            child: Text(
-                              cropModel.msp,
-                              style: TextStyle(
-                                  fontSize: 10, fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ),
+                    Container(
+                      // height: 50,
+                      // width: 120,
+                      child: Text(
+                        "Crop Name : ${cropModel.cropDescription}",
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold),
+                      ),
+                      // decoration: BoxDecoration(
+                      //     // border: Border.all(
+                      //     //   color: Colors.blue,
+                      //     //   width: 2,
+                      //     // ),
+                      //     borderRadius: BorderRadius.all(Radius.circular(10))),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      // width: 50,
+                      // height: 50,
+                      // decoration: BoxDecoration(
+                      // border: Border.all(
+                      //   color: Colors.blue,
+                      //   width: 2,
+                      // ),
+                      // borderRadius: BorderRadius.all(Radius.circular(10)),
+                      // ),
+
+                      child: Text(
+                        "MSP : ${cropModel.msp}",
+                        style: TextStyle(
+                            fontSize: 13, fontWeight: FontWeight.bold),
                       ),
                     ),
                     SizedBox(
-                      width: 10,
+                      height: 3,
                     ),
                     Container(
-                      width: 80,
-                      height: 30,
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Colors.blue,
-                          width: 2,
-                        ),
-                        borderRadius: BorderRadius.all(Radius.circular(5)),
+                      // width: 80,
+                      // height: 30,
+                      // decoration: BoxDecoration(
+                      // border: Border.all(
+                      //   color: Colors.blue,
+                      //   width: 2,
+                      // ),
+                      // borderRadius: BorderRadius.all(Radius.circular(5)),
+                      // ),
+                      child: Text("Quantity :  ${cropModel.cropQuantity}"),
+                    ),
+                    RaisedButton(
+                      color: Colors.blue,
+                      elevation: 3,
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => bidPage(cropModel.cropImage,
+                                  cropModel.msp, cropModel.cropDescription)),
+                        );
+                      },
+                      child: new Text(
+                        'BID',
+                        style:
+                            new TextStyle(fontSize: 12.0, color: Colors.white),
                       ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(3.0),
-                        child: Text("Quantity ${cropModel.cropQuantity}"),
-                      ),
-                    )
+                    ),
                   ],
                 ),
-                RaisedButton(
-                  color: Colors.blue,
-                  elevation: 3,
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => bidPage(cropModel.cropImage,
-                              cropModel.msp, cropModel.cropDescription)),
-                    );
-                  },
-                  child: new Text(
-                    'BID',
-                    style: new TextStyle(fontSize: 12.0, color: Colors.white),
-                  ),
-                ),
-              ],
-            ),
-          ],
+              ),
+            ],
+          ),
         ),
       ),
     );
