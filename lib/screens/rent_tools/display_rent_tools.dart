@@ -87,12 +87,21 @@ class DisplayRentTools extends StatelessWidget {
         ),
       )),
       appBar: AppBar(
-        title: Text((AppLocalizations.of(context).translate("SmartFarm"))),
+        title: Text((AppLocalizations.of(context).translate("Rent Tools"))),
         actions: [
-          IconButton(
-            icon: Icon(Icons.notifications),
-            color: Colors.white,
-            onPressed: () {},
+          DropdownButton(
+            // underline: SizedBox(),
+            icon: Icon(Icons.language, color:Colors.black),
+            iconSize: 24,
+            items: Language.languageList()
+                .map<DropdownMenuItem>((lang) => DropdownMenuItem(
+                      child: Text(lang.name),
+                      value: lang,
+                    ))
+                .toList(),
+            onChanged: (language) {
+              _changeLanguage(language);
+            },
           ),
           IconButton(
             icon: Icon(
