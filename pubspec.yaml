@@ -34,6 +34,7 @@ dependencies:
   image_picker: ^0.6.5+2
   image: ^2.1.4
   tflite: ^1.0.5
+  url_launcher: ^5.7.10
   fluttertoast: ^4.0.1
   geolocator:
   intl: ^0.16.1
