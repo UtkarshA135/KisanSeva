@@ -47,7 +47,7 @@ class cropTemplate extends StatelessWidget {
                 width: 120,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Text(cropModel.cropDescription),
+                  child: Text(cropModel?.cropDescription ?? ""),
                 ),
                 decoration: BoxDecoration(
                     border: Border.all(

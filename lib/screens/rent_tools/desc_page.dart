@@ -13,7 +13,7 @@ class DescPage extends StatelessWidget {
         padding: EdgeInsets.all(10),
         child: Align(
           alignment: Alignment.center,
-          child: Column(
+          child: ListView(
             children: [
               SizedBox(
                 height: 10,

@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -14,6 +15,8 @@ class AddRentToolsCtrl extends GetxController {
   String picDownloadUrl = '';
   var logger = Logger(printer: PrettyPrinter());
   final isLoading = false.obs;
+  FirebaseUser firebaseUser;
+  String ownerContactInfo;
   // Firestore firestore = FirebaseFirestore.instance;
 
   Future<dynamic> postImage(File imageFile) async {
@@ -36,6 +39,13 @@ class AddRentToolsCtrl extends GetxController {
     // });
     logger.d("toolImage url=${rentToolsModel.toolImage}");
     return storageTaskSnapshot.ref.getDownloadURL();
+  }
+  getCurrentUser(){
+    FirebaseAuth.instance.currentUser().then((value) => firebaseUser=value);
+  }
+
+  getOwnerInfoFromFirestore(){
+    Firestore.instance.collection('users').document(firebaseUser.toString()).get();
   }
 
   addRentTools(imageFile) async {

@@ -1,5 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:kisanseva/models/crop_model.dart';
+import 'package:kisanseva/screens/smartConnect/addCrop.dart';
+import 'package:kisanseva/screens/smartConnect/crop_template.dart';
 
 import 'BidPage.dart';
 
@@ -25,8 +30,7 @@ List crops = [
     msp: "30000",
   ),
   Crop(
-    imageUrl:
-        "https://shakhattownmall.com/admin/uploads/(56)2.jpg",
+    imageUrl: "https://shakhattownmall.com/admin/uploads/(56)2.jpg",
     desc: "Lore Ipsum",
     msp: "30000",
   ),
@@ -78,121 +82,42 @@ class _connectState extends State<connect> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView.builder(
-        scrollDirection: Axis.vertical,
-        itemCount: crops.length,
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: EdgeInsets.all(10),
-            child: Container(
-              decoration: BoxDecoration(
-                  border: Border.all(color: Colors.green, width: 3),
-                  borderRadius: BorderRadius.all(Radius.circular(20))),
-              // child: ListTile(
-              //   dense: true,
-              //   leading: Image.network(crops[index].imageUrl),
-              //   title: Text(crops[index].msp),
-              //   subtitle: Text(crops[index].desc),
-              child: Container(
-                height: 200,
-                width: 150,
-                decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.white,
-                      width: 5,
-                    ),
-                    borderRadius: BorderRadius.all(Radius.circular(20))),
-                child: Column(
-                  children: <Widget>[
-                    Padding(
-                      padding: EdgeInsets.only(top: 5, bottom: 5),
-                      child: Container(
-                          width: 70,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            border: Border.all(
-                              color: Colors.amber,
-                              width: 4,
-                            ),
-                          ),
-                          child: ClipOval(
-                              child: Image.network(
-                            crops[index].imageUrl,
-                            fit: BoxFit.cover,
-                            width: 50,
-                            height: 60,
-                          ))),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Container(
-                          height: 50,
-                          width: 120,
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(crops[index].desc),
-                          ),
-                          decoration: BoxDecoration(
-                              border: Border.all(
-                                color: Colors.blue,
-                                width: 2,
-                              ),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10))),
-                        ),
-                        Container(
-                          width: 50,
-                          height: 50,
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: Colors.blue,
-                              width: 2,
-                            ),
-                            borderRadius:
-                                  BorderRadius.all(Radius.circular(10)),
-                          ),
-                          child: Align(
-                            alignment: Alignment.center,
-                            child: Padding(
-                              padding: const EdgeInsets.all(3.0),
-                              child: Text(
-                                crops[index].msp,
-                                style: TextStyle(
-                                    fontSize: 10,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    RaisedButton(
-                      color: Colors.blue,
-                      elevation: 3,
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => bidPage(
-                                  crops[index].imageUrl,
-                                  crops[index].msp,
-                                  crops[index].imageUrl)),
-                        );
-                      },
-                      child: new Text(
-                        'BID',
-                        style:
-                            new TextStyle(fontSize: 12.0, color: Colors.white),
-                      ),
-                    ),
-                  ],
-                ),
+        appBar: AppBar(title: Text("Smart Connect")),
+        body: StreamBuilder<dynamic>(
+          stream: Firestore.instance.collection('crop').snapshots(),
+          // stream: displayRentToolsCtrl.rentToolsStrems(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              //do something with the data
+              return ListView.builder(
+                physics: NeverScrollableScrollPhysics(),
+                itemCount: snapshot.data.documents.length,
+                shrinkWrap: true,
+                itemBuilder: (context, index) {
+                  DocumentSnapshot crop = snapshot.data.documents[index];
+                  CropModel cropModel = CropModel.fromJson(crop.data);
+                  return cropTemplate(cropModel: cropModel);
+                },
+              );
+            } else if (snapshot.hasError) {
+              //do something with the error
+              return Text(snapshot.error.toString());
+            }
+            //the data is not ready, show a loading indicator
+            return Center(child: CircularProgressIndicator());
+          },
+        ),
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.add),
+          backgroundColor: Colors.green,
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => AddCrop(),
               ),
-            ),
-          );
-        },
-      ),
-    );
+            );
+          },
+        ));
   }
 }
