@@ -84,7 +84,7 @@ class CropTemplate extends StatelessWidget {
                         // ),
 
                         child: Text(
-                          "MSP : ${cropModel.msp} /tonne",
+                          "MSP : ${cropModel.msp} ",
                           style: TextStyle(
                               fontSize: 13, fontWeight: FontWeight.bold),
                         ),
@@ -102,7 +102,7 @@ class CropTemplate extends StatelessWidget {
                         // ),
                         // borderRadius: BorderRadius.all(Radius.circular(5)),
                         // ),
-                        child: Text("Quantity :  ${cropModel.cropQuantity}"),
+                        child: Text("Quantity :  ${cropModel?.cropQuantity}"),
                       ),
                       RaisedButton(
                         color: Colors.blue,

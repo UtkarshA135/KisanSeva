@@ -34,6 +34,7 @@ class CropModel {
         // allBid: List<dynamic>.from(json["allBid"].map((x) => x)),
         higestBid: json["HigestBid"],
         ownerContactInfo: json["ownerContactInfo"],
+        cropQuantity: json["cropQuantity"],
       );
 
   Map<String, dynamic> toJson() => {
