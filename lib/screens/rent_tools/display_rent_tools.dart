@@ -220,7 +220,7 @@ class DisplayRentTools extends StatelessWidget {
                       width: 10,
                     ),
                     Container(
-                      width: 75,
+                      width: 85,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
                         color: Colors.yellow,
@@ -245,7 +245,7 @@ class DisplayRentTools extends StatelessWidget {
                       width: 10,
                     ),
                     Container(
-                      width: 75,
+                      width: 85,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
                         color: Colors.yellow,
