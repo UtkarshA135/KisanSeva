@@ -84,7 +84,7 @@ class CropTemplate extends StatelessWidget {
                         // ),
 
                         child: Text(
-                          "MSP : ${cropModel.msp}",
+                          "MSP : ${cropModel.msp} /tonne",
                           style: TextStyle(
                               fontSize: 13, fontWeight: FontWeight.bold),
                         ),

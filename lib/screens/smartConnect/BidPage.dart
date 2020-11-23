@@ -14,7 +14,7 @@ class BidPage extends StatefulWidget {
 
 // ignore: camel_case_types
 class _BidPageState extends State<BidPage> {
-  final displayCropController = Get.find<DisplayCropCtrl>();
+  final displayCropController = Get.put(DisplayCropCtrl());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
