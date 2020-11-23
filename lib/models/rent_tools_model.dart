@@ -17,7 +17,7 @@ class RentToolsModel {
     String toolType;
     String toolPricePerDay;
     bool available;
-    int ownerContactInfo;
+    String ownerContactInfo;
 
     factory RentToolsModel.fromRawJson(String str) => RentToolsModel.fromJson(json.decode(str));
 

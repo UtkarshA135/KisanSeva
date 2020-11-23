@@ -29,7 +29,7 @@ class CropModel {
         cropName: json["cropName"],
         cropDescription: json["cropDescription"],
         msp: json["msp"],
-        allBid: List<dynamic>.from(json["allBid"].map((x) => x)),
+        // allBid: List<dynamic>.from(json["allBid"].map((x) => x)),
         higestBid: json["HigestBid"],
         ownerContactInfo: json["ownerContactInfo"],
       );

@@ -1,9 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kisanseva/main.dart';
 import 'package:kisanseva/models/app_localization.dart';
 import 'package:kisanseva/models/language.dart';
+import 'package:get/get.dart';
 import 'package:kisanseva/models/rent_tools_model.dart';
+import 'package:kisanseva/screens/rent_tools/display_rent_tools_ctrl.dart';
 import 'package:kisanseva/screens/rent_tools/rent_tools_template.dart';
 import 'package:kisanseva/screens/weather/screens/homeScreen.dart';
 import 'package:kisanseva/services/authservice.dart';
@@ -13,6 +16,7 @@ import 'desc_page.dart';
 
 class DisplayRentTools extends StatelessWidget {
 
+  final displayRentToolsCtrl = Get.put(DisplayRentToolsCtrl());
   @override
   Widget build(BuildContext context) {
       void _changeLanguage(Language language) {
@@ -102,17 +106,15 @@ class DisplayRentTools extends StatelessWidget {
                       builder: (context) => AuthService().handleAuth()));
             },
           ),
-           IconButton(
+          IconButton(
             icon: Icon(
               Icons.cloud,
               color: Colors.black,
             ),
             onPressed: () async {
-            //  AuthService().signOut();
-              Navigator.push(
-                  context,
-                  new MaterialPageRoute(
-                      builder: (context) => WHomescreen()));
+              //  AuthService().signOut();
+              Navigator.push(context,
+                  new MaterialPageRoute(builder: (context) => WHomescreen()));
             },
           ),
          
@@ -221,17 +223,45 @@ class DisplayRentTools extends StatelessWidget {
               SizedBox(
                 height: 20,
               ),
-              GridView.builder(
-                physics: NeverScrollableScrollPhysics(),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2),
-                shrinkWrap: true,
-                itemCount: items.length,
-                itemBuilder: (context, index) {
-                  return items[index];
-                  // return RentToolsTemplate(rentToolsModel: model);
+              StreamBuilder<dynamic>(
+                stream: Firestore.instance.collection('rentTools').snapshots(),
+                // stream: displayRentToolsCtrl.rentToolsStrems(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    //do something with the data
+                    return ListView.builder(
+                      physics: NeverScrollableScrollPhysics(),
+                      itemCount: snapshot.data.documents.length,
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) {
+                        DocumentSnapshot rentTools =
+                            snapshot.data.documents[index];
+                        RentToolsModel rentToolsModel =
+                            RentToolsModel.fromJson(rentTools.data);
+                        return RentToolsTemplate(
+                            rentToolsModel: rentToolsModel);
+                      },
+                    );
+                  } else if (snapshot.hasError) {
+                    //do something with the error
+                    return Text(snapshot.error.toString());
+                  }
+                  //the data is not ready, show a loading indicator
+                  return Center(child: CircularProgressIndicator());
                 },
               )
+
+              // GridView.builder(
+              //   physics: NeverScrollableScrollPhysics(),
+              //   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              //       crossAxisCount: 2),
+              //   shrinkWrap: true,
+              //   itemCount: items.length,
+              //   itemBuilder: (context, index) {
+              //     // return items[index];
+              //     return RentToolsTemplate(rentToolsModel: model);
+              //   },
+              // )
             ],
           ),
         ),

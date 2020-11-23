@@ -76,12 +76,23 @@ class Cure extends StatelessWidget {
       appBar: AppBar(
         title: Text('Plant Disease Recognition'),
       ),
-      body: Column(
-        children: <Widget>[
-          Expanded(
-            child: Text(disease[diseaseName]),
-          ),
-        ],
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text(
+              "Cure : ",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Expanded(
+              child: Text(disease[diseaseName]),
+            ),
+          ],
+        ),
       ),
     );
   }

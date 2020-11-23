@@ -21,6 +21,7 @@ class RentToolsTemplate extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.all(10),
         child: Container(
+          clipBehavior: Clip.antiAliasWithSaveLayer,
           decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(15),
@@ -34,24 +35,33 @@ class RentToolsTemplate extends StatelessWidget {
           child: Column(
             children: [
               Image(
-                image: NetworkImage(rentToolsModel.toolImage),
-                height: 130,
-                width: 130,
-                fit: BoxFit.contain,
+                height: MediaQuery.of(context).size.height / 4,
+                width: MediaQuery.of(context).size.width,
+                image: NetworkImage(rentToolsModel?.toolImage),
+                fit: BoxFit.cover,
+              ),
+              SizedBox(
+                height: 5,
               ),
               Text(
-                rentToolsModel.toolName,
+                rentToolsModel?.toolName,
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
               ),
+              SizedBox(
+                height: 5,
+              ),
               Text(
-                rentToolsModel.toolPricePerDay,
+                "${rentToolsModel?.toolPricePerDay}/day",
                 style: TextStyle(
                   fontSize: 16,
                 ),
-              )
+              ),
+              SizedBox(
+                height: 5,
+              ),
             ],
           ),
         ),

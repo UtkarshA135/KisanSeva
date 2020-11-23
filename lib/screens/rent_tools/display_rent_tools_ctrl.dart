@@ -5,7 +5,7 @@ import 'package:kisanseva/models/rent_tools_model.dart';
 class DisplayRentToolsCtrl extends GetxController {
   RentToolsModel rentToolsModel = RentToolsModel();
   final isLoading = false.obs;
-  rentToolsStrems() {
-    Firestore.instance.collection('rentTools').getDocuments();
+  Stream rentToolsStrems() {
+    // return Firestore.instance.collection('rentTools').document().snapshot;
   }
 }
