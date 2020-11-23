@@ -20,7 +20,7 @@ class DisplayRentTools extends StatelessWidget {
   final displayRentToolsCtrl = Get.put(DisplayRentToolsCtrl());
   final logger = Logger();
 
- 
+
   @override
   Widget build(BuildContext context) {
     void _changeLanguage(Language language) {

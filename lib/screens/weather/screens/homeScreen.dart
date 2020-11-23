@@ -81,21 +81,21 @@ class _HomescreenState extends State<WHomescreen> {
                         ? Weather(weather: weatherData)
                         : Container(),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: isLoading
-                        ? CircularProgressIndicator(
-                            strokeWidth: 2.0,
-                            valueColor:
-                                new AlwaysStoppedAnimation(Colors.white),
-                          )
-                        : IconButton(
-                            icon: new Icon(Icons.refresh),
-                            tooltip: 'Refresh',
-                            onPressed: loadWeather,
-                            color: Colors.white,
-                          ),
-                  ),
+                  // Padding(
+                  //   padding: const EdgeInsets.all(8.0),
+                  //   child: isLoading
+                  //       ? CircularProgressIndicator(
+                  //           strokeWidth: 2.0,
+                  //           valueColor:
+                  //               new AlwaysStoppedAnimation(Colors.white),
+                  //         )
+                  //       : IconButton(
+                  //           icon: new Icon(Icons.refresh),
+                  //           tooltip: 'Refresh',
+                  //           onPressed: loadWeather,
+                  //           color: Colors.white,
+                  //         ),
+                  // ),
                 ],
               ),
             ),

@@ -32,6 +32,7 @@ class _AddCropState extends State<AddCrop> {
       return Column(
         children: <Widget>[
           Container(
+            clipBehavior: Clip.antiAliasWithSaveLayer,
             decoration: BoxDecoration(
                 border: Border.all(
                   color: Colors.black,
@@ -95,7 +96,7 @@ class _AddCropState extends State<AddCrop> {
               },
               shape: StadiumBorder(),
               child: Text(
-                "Done",
+                "Upload",
                 style: TextStyle(color: Colors.black87),
               ),
             ),
@@ -105,82 +106,90 @@ class _AddCropState extends State<AddCrop> {
       body: Center(
         child: SizedBox(
           width: MediaQuery.of(context).size.width * 0.9,
-          height: MediaQuery.of(context).size.height * 0.7,
-          child: Card(
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(20)),
-                side: BorderSide(width: 5, color: Colors.green)),
-            elevation: 10,
-            child: Padding(
-              padding: const EdgeInsets.only(
-                  top: 10.0, bottom: 10, left: 15, right: 15),
-              child: ListView(
-                padding: EdgeInsets.all(5),
-                shrinkWrap: true,
-                children: [
-                  SizedBox(
-                    height: 10,
+          // height: MediaQuery.of(context).size.height * 0.7,
+          child: Padding(
+            padding: const EdgeInsets.only(
+                top: 10.0, bottom: 10, left: 15, right: 15),
+            child: ListView(
+              padding: EdgeInsets.all(5),
+              shrinkWrap: true,
+              children: [
+                SizedBox(
+                  height: 10,
+                ),
+                _addPhoto(),
+                SizedBox(
+                  height: 10,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                      left: 8.0, right: 8, top: 4, bottom: 4),
+                  child: TextFormField(
+                    onChanged: (value) {
+                      addCropCtrl.cropModel.cropName = value;
+                    },
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.grey)),
+                      border: OutlineInputBorder(),
+                      labelText: "Crop Name",
+                      hintText: "Tomato,Onion etc",
+                    ),
                   ),
-                  _addPhoto(),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                        left: 8.0, right: 8, top: 4, bottom: 4),
-                    child: TextFormField(
-                      onChanged: (value) {
-                        addCropCtrl.cropModel.cropName = value;
-                      },
-                      decoration: InputDecoration(
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                      left: 8.0, right: 8, top: 4, bottom: 4),
+                  child: TextFormField(
+                    onChanged: (value) {
+                      addCropCtrl.cropModel.msp = value;
+                    },
+                    keyboardType: TextInputType.number,
+                    decoration: InputDecoration(
                         enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.grey)),
                         border: OutlineInputBorder(),
-                        labelText: "Crop Name",
-                        hintText: "Tomato,Onion etc",
-                      ),
-                    ),
+                        labelText: "Minimum Support Price",
+                        hintText: "eg : Rs xxx/tonne"),
                   ),
-                  SizedBox(
-                    height: 10,
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                      left: 8.0, right: 8, top: 4, bottom: 4),
+                  child: TextFormField(
+                    onChanged: (value) {
+                      addCropCtrl.cropModel.cropQuantity = value;
+                    },
+                    decoration: InputDecoration(
+                        enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.grey)),
+                        border: OutlineInputBorder(),
+                        labelText: "Quantity",
+                        hintText: "Can include the organic status and region"),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                        left: 8.0, right: 8, top: 4, bottom: 4),
-                    child: TextFormField(
-                      onChanged: (value) {
-                        addCropCtrl.cropModel.msp = value;
-                      },
-                      keyboardType: TextInputType.number,
-                      decoration: InputDecoration(
-                          enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.grey)),
-                          border: OutlineInputBorder(),
-                          labelText: "Minimum Support Price",
-                          hintText: "eg : Rs xxx/tonne"),
-                    ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                      left: 8.0, right: 8, top: 4, bottom: 4),
+                  child: TextFormField(
+                    onChanged: (value) {
+                      addCropCtrl.cropModel.cropDescription = value;
+                    },
+                    decoration: InputDecoration(
+                        enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.grey)),
+                        border: OutlineInputBorder(),
+                        labelText: "Crop Description",
+                        hintText: "Can include the organic status and region"),
                   ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                        left: 8.0, right: 8, top: 4, bottom: 4),
-                    child: TextFormField(
-                      onChanged: (value) {
-                        addCropCtrl.cropModel.cropDescription = value;
-                      },
-                      decoration: InputDecoration(
-                          enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.grey)),
-                          border: OutlineInputBorder(),
-                          labelText: "Crop Description",
-                          hintText:
-                              "Can include the organic status and region"),
-                    ),
-                  )
-                ],
-              ),
+                )
+              ],
             ),
           ),
         ),

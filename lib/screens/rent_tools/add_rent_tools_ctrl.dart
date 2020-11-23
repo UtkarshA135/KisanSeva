@@ -18,10 +18,10 @@ class AddRentToolsCtrl extends GetxController {
   FirebaseUser firebaseUser;
   String ownerContactInfo;
   // Firestore firestore = FirebaseFirestore.instance;
-String contact="";
+  String contact = "";
   Future<dynamic> postImage(File imageFile) async {
     logger.d('inside postImage');
-    
+
     String fileName = DateTime.now().millisecondsSinceEpoch.toString();
     StorageReference storageReference =
         FirebaseStorage.instance.ref().child('rentTools/$fileName');
@@ -41,23 +41,26 @@ String contact="";
     logger.d("toolImage url=${rentToolsModel.toolImage}");
     return storageTaskSnapshot.ref.getDownloadURL();
   }
-  getCurrentUser()async{
-             await FirebaseAuth?.instance?.currentUser()?.then((value) {
-             contact = value?.phoneNumber;
-             rentToolsModel.ownerContactInfo = (contact);
-             });
+
+  getCurrentUser() async {
+    await FirebaseAuth?.instance?.currentUser()?.then((value) {
+      contact = value?.phoneNumber;
+      rentToolsModel.ownerContactInfo = (contact);
+    });
   }
 
-  getOwnerInfoFromFirestore()async{
-   //return Firestore.instance.collection('users').document(firebaseUser.uid);
+  // getOwnerInfoFromFirestore() async {
+  //   //return Firestore.instance.collection('users').document(firebaseUser.uid);
 
-
-     await Firestore.instance.collection('users').document(firebaseUser.uid).snapshots().forEach((element) {
-     contact = element.data["phno"];
-   });
-    // =int.parse(contact);
-
-  }
+  //   await Firestore.instance
+  //       .collection('users')
+  //       .document(firebaseUser.uid)
+  //       .snapshots()
+  //       .forEach((element) {
+  //     contact = element.data["phno"];
+  //   });
+  //   // =int.parse(contact);
+  // }
 
   addRentTools(imageFile) async {
     // isLoading(true);
@@ -82,7 +85,7 @@ String contact="";
 
     logger.d("inside addRentTools ${rentToolsModel?.toJson()}");
     await getCurrentUser();
-   // await getOwnerInfoFromFirestore();
+    // await getOwnerInfoFromFirestore();
     await Firestore.instance
         .collection("rentTools")
         .document()

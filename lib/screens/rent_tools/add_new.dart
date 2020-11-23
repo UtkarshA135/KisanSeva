@@ -208,6 +208,7 @@ class _AddItemState extends State<AddItem> {
             onChanged: (String newValue) {
               setState(() {
                 dropdownValue = newValue;
+                addRentToolsCtrl.rentToolsModel.toolType = newValue;
               });
             },
             items: <String>['Tractors', 'Harvestors', 'Pesticides', 'Others']
