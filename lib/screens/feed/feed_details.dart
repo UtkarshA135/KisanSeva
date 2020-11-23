@@ -10,8 +10,9 @@ class FeedDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text((AppLocalizations.of(context)
-                                            .translate ("Feed")),),
+        title: Text(
+          (AppLocalizations.of(context).translate("Feed")),
+        ),
         actions: [
           FlatButton(
             color: Colors.green,
@@ -19,8 +20,7 @@ class FeedDetails extends StatelessWidget {
             child: Row(
               children: [
                 Text(
-                  (AppLocalizations.of(context)
-                                            .translate ("Bookmarks")),
+                  (AppLocalizations.of(context).translate("Bookmarks")),
                   style: TextStyle(color: Colors.black87),
                 ),
                 Icon(Icons.bookmark)
