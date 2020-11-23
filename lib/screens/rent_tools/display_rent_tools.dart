@@ -91,7 +91,7 @@ class DisplayRentTools extends StatelessWidget {
         actions: [
           DropdownButton(
             // underline: SizedBox(),
-            icon: Icon(Icons.language, color:Colors.black),
+            icon: Icon(Icons.language, color: Colors.black),
             iconSize: 24,
             items: Language.languageList()
                 .map<DropdownMenuItem>((lang) => DropdownMenuItem(
@@ -116,17 +116,17 @@ class DisplayRentTools extends StatelessWidget {
                       builder: (context) => AuthService().handleAuth()));
             },
           ),
-          IconButton(
-            icon: Icon(
-              Icons.cloud,
-              color: Colors.black,
-            ),
-            onPressed: () async {
-              //  AuthService().signOut();
-              Navigator.push(context,
-                  new MaterialPageRoute(builder: (context) => WHomescreen()));
-            },
-          ),
+          // IconButton(
+          //   icon: Icon(
+          //     Icons.cloud,
+          //     color: Colors.black,
+          //   ),
+          //   onPressed: () async {
+          //     //  AuthService().signOut();
+          //     Navigator.push(context,
+          //         new MaterialPageRoute(builder: (context) => WHomescreen()));
+          //   },
+          // ),
         ],
       ),
       body: Container(
@@ -186,9 +186,18 @@ class DisplayRentTools extends StatelessWidget {
                             logger.d(
                                 "displayRentToolsCtrl.selectedCategory.value is ${displayRentToolsCtrl.selectedCategory.value} ");
                           },
-                          child: Text(
-                            AppLocalizations.of(context).translate("All"),
-                          ),
+                          child: Obx(() => Text(
+                                AppLocalizations.of(context).translate("All"),
+                                style: displayRentToolsCtrl
+                                            .selectedCategory.value ==
+                                        "All"
+                                    ? TextStyle(
+                                        color: Colors.black,
+                                      )
+                                    : TextStyle(
+                                        color: Colors.green,
+                                      ),
+                              )),
                         ),
                       ),
                     ),
@@ -210,9 +219,19 @@ class DisplayRentTools extends StatelessWidget {
                             logger.d(
                                 "displayRentToolsCtrl.selectedCategory.value is ${displayRentToolsCtrl.selectedCategory.value} ");
                           },
-                          child: Text(
-                            AppLocalizations.of(context).translate("Tractors"),
-                          ),
+                          child: Obx(() => Text(
+                                AppLocalizations.of(context)
+                                    .translate("Tractors"),
+                                style: displayRentToolsCtrl
+                                            .selectedCategory.value ==
+                                        "Tractors"
+                                    ? TextStyle(
+                                        color: Colors.black,
+                                      )
+                                    : TextStyle(
+                                        color: Colors.green,
+                                      ),
+                              )),
                         ),
                       ),
                     ),
@@ -234,10 +253,19 @@ class DisplayRentTools extends StatelessWidget {
                             logger.d(
                                 "displayRentToolsCtrl.selectedCategory.value is ${displayRentToolsCtrl.selectedCategory.value} ");
                           },
-                          child: Text(
-                            AppLocalizations.of(context)
-                                .translate("Harvestors"),
-                          ),
+                          child: Obx(() => Text(
+                                AppLocalizations.of(context)
+                                    .translate("Harvestors"),
+                                style: displayRentToolsCtrl
+                                            .selectedCategory.value ==
+                                        "Harvestors"
+                                    ? TextStyle(
+                                        color: Colors.black,
+                                      )
+                                    : TextStyle(
+                                        color: Colors.green,
+                                      ),
+                              )),
                         ),
                       ),
                     ),
@@ -259,10 +287,19 @@ class DisplayRentTools extends StatelessWidget {
                             logger.d(
                                 "displayRentToolsCtrl.selectedCategory.value is ${displayRentToolsCtrl.selectedCategory.value} ");
                           },
-                          child: Text(
-                            AppLocalizations.of(context)
-                                .translate("Pesticides"),
-                          ),
+                          child: Obx(() => Text(
+                                AppLocalizations.of(context)
+                                    .translate("Pesticides"),
+                                style: displayRentToolsCtrl
+                                            .selectedCategory.value ==
+                                        "Pesticides"
+                                    ? TextStyle(
+                                        color: Colors.black,
+                                      )
+                                    : TextStyle(
+                                        color: Colors.green,
+                                      ),
+                              )),
                         ),
                       ),
                     ),
@@ -284,9 +321,19 @@ class DisplayRentTools extends StatelessWidget {
                             logger.d(
                                 "displayRentToolsCtrl.selectedCategory.value is ${displayRentToolsCtrl.selectedCategory.value} ");
                           },
-                          child: Text(
-                            AppLocalizations.of(context).translate("Others"),
-                          ),
+                          child: Obx(() => Text(
+                                AppLocalizations.of(context)
+                                    .translate("Others"),
+                                style: displayRentToolsCtrl
+                                            .selectedCategory.value ==
+                                        "Others"
+                                    ? TextStyle(
+                                        color: Colors.black,
+                                      )
+                                    : TextStyle(
+                                        color: Colors.green,
+                                      ),
+                              )),
                         ),
                       ),
                     ),
