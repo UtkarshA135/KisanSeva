@@ -1,6 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:kisanseva/models/feed_model.dart';
 import 'package:kisanseva/screens/feed/feed_details.dart';
+import 'package:kisanseva/screens/feed/feed_template.dart';
 
 class Feed extends StatelessWidget {
   @override
@@ -49,38 +51,62 @@ class Feed extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Padding(
-              padding: EdgeInsets.all(10),
-              child: Container(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 15,
-                ),
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(35),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black54,
-                        offset: Offset(1.0, 1.0),
-                        blurRadius: 10.0,
-                      ),
-                    ]),
-                child: TextFormField(
-                  decoration: InputDecoration(
-                      icon: Icon(Icons.search),
-                      hintText: "Search...",
-                      border: InputBorder.none),
-                ),
-              ),
-            ),
-            ListView.builder(
-              shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
-              itemCount: posts.length,
-              itemBuilder: (context, index) {
-                return posts[index];
+            // Padding(
+            //   padding: EdgeInsets.all(10),
+            //   child: Container(
+            //     padding: EdgeInsets.symmetric(
+            //       horizontal: 15,
+            //     ),
+            //     decoration: BoxDecoration(
+            //         color: Colors.white,
+            //         borderRadius: BorderRadius.circular(35),
+            //         boxShadow: [
+            //           BoxShadow(
+            //             color: Colors.black54,
+            //             offset: Offset(1.0, 1.0),
+            //             blurRadius: 10.0,
+            //           ),
+            //         ]),
+            //     child: TextFormField(
+            //       decoration: InputDecoration(
+            //           icon: Icon(Icons.search),
+            //           hintText: "Search...",
+            //           border: InputBorder.none),
+            //     ),
+            //   ),
+            // ),
+            // ListView.builder(
+            //   shrinkWrap: true,
+            //   physics: NeverScrollableScrollPhysics(),
+            //   itemCount: posts.length,
+            //   itemBuilder: (context, index) {
+            //     return posts[index];
+            //   },
+            // ),
+            StreamBuilder<dynamic>(
+              stream: Firestore.instance.collection('feed').snapshots(),
+              // stream: displayRentToolsCtrl.rentToolsStrems(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  //do something with the data
+                  return ListView.builder(
+                    physics: NeverScrollableScrollPhysics(),
+                    itemCount: snapshot.data.documents.length,
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) {
+                      DocumentSnapshot feed = snapshot.data.documents[index];
+                      FeedModel feedModel = FeedModel.fromJson(feed.data);
+                      return FeedTemplate(feedModel: feedModel);
+                    },
+                  );
+                } else if (snapshot.hasError) {
+                  //do something with the error
+                  return Text(snapshot.error.toString());
+                }
+                //the data is not ready, show a loading indicator
+                return Center(child: CircularProgressIndicator());
               },
-            ),
+            )
           ],
         ),
       ),
