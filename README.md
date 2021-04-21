@@ -22,14 +22,25 @@ the online the annual inter college hackathon and also selected for IFFPC conduc
 
 ### Overview
 
-_Joyce Meyer said, “I believe that the greatest gift you can give to your family and the world is a healthy you”_.
+A Flutter App , but with a blend of Machine Learning in it and intergrated with a whole lot of features which makes it probably the best of the apps I have worked so far. 
 
-_If a person stays healthy physically, he will stay healthy mentally too. Physical and mental health is linked fundamentally. If we are able to keep our body fit and healthy by taking the right food and doing physical activates regularly, our body will definitely help us to deal with daily stress._ 
+So basically I along with a bunch of seniors from my college have built this "KisanSeva" app - a one stop for Farmers of India who are facing a whole lot issues nowadays .
 
-_Keeping in mind above points we have decided to make Healthician .Healthify is focused to cover almost all aspects related to Healthcare in a single app.Healthician has 8_ _categories which relate to covid detection through lung x-ray, Yoga posture correction, Doctor Patient interaction, BMI calculation, Donate, Symptoms Detector , Medicine_ _Reminder and Mental Health_
+App has multiple features - 
+1- Secured Authentication (via OTP)
+2- Multilingual for efficient use 
+2- Rent tools / farming essentials
+3- Plant disease detection
+4- Crop prediction 
+5- Smart connect to prevent third party person take advantage 
+6- Know the Weather
+7- Feed 
+8- Toll free number/ expert assistance
+
+The best thing about the app is its built in 10 days !!! 
 
 ### _Challenges we ran into_
-_The most challenging tasks we faced for this project were tflite implementation,using posnet technology to detect the poses,using dialog flow using infermedica api and flutter_ _animations and as well as integrating push notifications was a toil_.
+_The most challenging tasks we faced for this project were tflite implementation,using pandas,numpy and scikit learn to predict crop which is yet not too accurate_.
 
 ### Technology used
 
