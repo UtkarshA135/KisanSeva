@@ -61,7 +61,7 @@ _The most challenging tasks we faced for this project were tflite implementation
 
 <img src="https://github.com/UtkarshA135/KisanSeva/blob/master/IMG-20201130-WA0055.jpg" width="250" title="hover text">
 
-<img src="https://github.com/anirudh-t4/wHACKiest2021_USELESS_DEVELOPERS/blob/main/images/IMG-20210404-WA0005.jpg" width="250" title="hover text">
+<img src="https://github.com/UtkarshA135/KisanSeva/blob/master/s.jpg" width="250" title="hover text">
 
 <img src="https://github.com/UtkarshA135/KisanSeva/blob/master/IMG_20210421_083435.jpg" width="250" title="hover text">
 <img src="https://github.com/anirudh-t4/wHACKiest2021_USELESS_DEVELOPERS/blob/main/images/medicine.jpeg" width="250" title="hover text">
