@@ -12,7 +12,7 @@ the online the annual inter college hackathon and also selected for IFFPC conduc
 
 ### Important Links
 
-[Demo video link](https://drive.google.com/file/d/1i7wqK5IXuEcN0IbifGzsHXqsMElznIF1/view?usp=drivesdk)
+[Demo video link available on LinkedIn post](https://www.linkedin.com/posts/utkarsh-agarwal-654470191_flutter-firebase-activity-6739141708711280640-DcMy)
 
 [Presentation of our idea](https://www.canva.com/design/DAEODJfeMvQ/qXX7OivLJ0kkQ7KPmvaJ-w/edit)
 
