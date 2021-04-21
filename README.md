@@ -1,4 +1,4 @@
-# kisanseva
+# KisanSeva- One stop for farmers of India
 
 A new Flutter project.
 
