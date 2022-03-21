@@ -12,7 +12,7 @@ the online the annual inter college hackathon and also awarded Certificate of Ex
 
 ### Important Links
 
-[Demo video link available on LinkedIn post](https://www.linkedin.com/posts/utkarsh-agarwal-654470191_flutter-firebase-activity-6739141708711280640-DcMy)
+[Demo video link](https://drive.google.com/drive/folders/1_QH_19TQNeMMl10CCHcl1uMIb5t8LOny)
 
 [Presentation of our idea](https://www.canva.com/design/DAEODJfeMvQ/qXX7OivLJ0kkQ7KPmvaJ-w/edit)
 
