@@ -20,6 +20,8 @@ the online the annual inter college hackathon and also awarded Certificate of Ex
 
 [ML model for crop prediction written on Colab ](https://colab.research.google.com/drive/17jMLUXK8p6B48CAPW_8DZANxF_CB3jDY?authuser=1)
 
+[Apk (Just in case application doesn't run locally)](https://drive.google.com/file/d/1vAfO7OQnAB9hZbjp01v64lLL70S90_34/view?usp=sharing)
+
 ### Overview
 
 A Flutter App , but with a blend of Machine Learning in it and intergrated with a whole lot of features which makes it probably the best of the apps I have worked so far. 
